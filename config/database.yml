@@ -33,7 +33,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf-8
-  database: cursos_test
+  database: cursos_prod
   username: postgres
   password: 123456
   host: localhost
