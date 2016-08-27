@@ -27,6 +27,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
+    @categorias=Category.all
     @course = Course.new(course_params)
 
     respond_to do |format|
