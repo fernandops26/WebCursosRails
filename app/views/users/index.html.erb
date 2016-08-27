@@ -1,0 +1,7 @@
+<h1>ESte es el home del usuario autenticado</h1>
+
+
+
+<h2>Bienvenido <%=@current_user.username%></h2>
+<%= link_to "Cerrar session",logout_path, method: :delete %>
+

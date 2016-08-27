@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @course.titulo %>
+</p>
+
+<p>
+  <strong>Contenido:</strong>
+  <%= @course.contenido %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @course.category.nombre %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @course.fecha %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @course.estado %>
+</p>
+
+<p>
+  <strong>Imagen:</strong>
+  <%= image_tag @course.imagen.url(:thumb) %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

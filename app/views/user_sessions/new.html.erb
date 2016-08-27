@@ -1,0 +1,45 @@
+<div class="fh5co-contact ">
+<div class="container bg-danger">
+	<% if flash[:errores] %>
+<%=flash[:errores] %>
+<%end%>
+</div>
+<div class="container contenedor__registro well">
+<div class="row blue">
+<div class="col-sm-12">
+	<h2>Ingresa!</h2>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6 center">
+<p>
+	* Todos lo datos son requeridos
+</p>
+</div>
+
+<%= form_for(:session_user,url:login_path) do |f|%>
+<div class="col-md-12">
+	<div class="form-group">
+	<%= f.text_field :username,{class:'form-control',placeholder:'Usuario'}%>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="form-group">
+	<%= f.password_field :password,{class:'form-control',placeholder:'Usuario'}%>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="form-group">
+		<div class="checkbox-inline">
+			<label><%=f.check_box :remember_me %> Recordarme</label>
+		</div>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="form-group">
+	<%=f.submit 'Iniciar Sessión',{class:'btn btn-info'} %>
+	</div>
+</div>
+<%end%>
+</div>
+</div>

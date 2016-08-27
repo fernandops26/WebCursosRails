@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebCursos</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="fh5co-page">
+<header id="fh5co-header" role="banner">
+	<div class="container">
+		<div class="header-inner">
+			<h1><a href="index.html">Flew</a></h1>
+			<nav role="navigation">
+				<ul>
+					<li><%= link_to 'Inicio',root_path%>
+					<li><a href="services.html">Servicios</a></li>
+					<li><a href="pricing.html">Precios</a></li>
+					<li><%= link_to 'Registrate!',signup_path%></li>
+					<li><a href="contacto">Contacto</a></li>
+					<li class="cta"><a href="#">Empieza aquí</a></li>
+				</ul>
+			</nav>
+		</div>
+		<%if @current_user%>
+		<div class="container ">
+		<span>Hola, <%=@current_user.username%></span>
+		</div>
+		<%end%>
+	</div>
+</header>
+
+<%= yield %>
+
+</div>
+
+
+</body>
+</html>

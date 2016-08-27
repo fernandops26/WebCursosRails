@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombres: MyString
+  ape_pat: MyString
+  ape_mat: MyString
+  sexo: false
+  f_nacimiento: 2016-08-22
+  celular: 
+  email: MyString
+  department_id: 
+  direccion: MyString
+  profesion: MyString
+  grado_acad: MyString
+
+two:
+  nombres: MyString
+  ape_pat: MyString
+  ape_mat: MyString
+  sexo: false
+  f_nacimiento: 2016-08-22
+  celular: 
+  email: MyString
+  department_id: 
+  direccion: MyString
+  profesion: MyString
+  grado_acad: MyString

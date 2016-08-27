@@ -1,0 +1,148 @@
+
+<div class="fh5co-contact ">
+<div class="container bg-danger">
+	<% if flash[:errores] %>
+<%=flash[:errores] %>
+<%end%>
+</div>
+<div class="container contenedor__registro well">
+<div class="row blue">
+<div class="col-sm-12">
+	<h2>Registro</h2>
+</div>
+</div>
+
+<%=form_for :user , url:signup_path do |f|%>
+
+<div class="row ">
+<div class="col-sm-12">
+<p>
+	* Todos lo datos son requeridos
+</p>
+	
+</div>
+	<div class="col-md-6">
+		
+	
+
+<%=f.fields_for :person do |p|%>
+<div class="row">
+	<div class="col-md-12">
+	 <%= f.label 'Datos Personales'%></br>
+		<div class="form-group">
+		<%= p.text_field :nombres ,{class:'form-control',placeholder:'Nombre completo'}%>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+		<%= p.text_field :ape_pat,{class:'form-control',placeholder:'Apellido Paterno'}%>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+		<%= p.text_field :ape_mat,{class:'form-control',placeholder:'Apellido Materno'}%>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+		 <%= p.email_field :email ,{class:'form-control',placeholder:'Correo'}%>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+
+		<div class="form-group">
+		<label>Fecha de nacimiento</label>
+		<%= p.date_select :f_nacimiento , options={with_css_classes:true},class: 'form-control inline'%>
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-sm-12"/>
+		<div class="form-group">
+			<label >Especifica tu ubicacion</label>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="form-group">
+		
+		<%= p.collection_select :department_id, @departamentos,:id, :nombredep,{prompt: false},{class:'form-control'}%>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="form-group">
+		<%= p.grouped_collection_select :province_id , @departamentos, :province,:nombredep, :id, :nombreprov,{prompt:'Selecciona Provincia' },{class:'form-control'}%>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="form-group">
+		<%=p.grouped_collection_select :district_id, @provincias, :district,:nombreprov,:id,:nombredist,{prompt:'Selecciona Distritos'},{class:'form-control'}%>
+		</div>
+	</div>
+</div>
+ <div class="row">
+ 	<div class="col-md-12">
+		<div class="form-group">
+		<%= p.text_field :direccion,{class:'form-control',placeholder:'Dirección'}%>
+		</div>
+	</div>
+	<div class="col-md-12">
+	<label>Genero</label>
+		<div class="form-group">
+
+		<div class="checkbox-inline">
+			 <label><%= p.radio_button :sexo, true %> Hombre</label>
+		</div>
+		<div class="checkbox-inline">
+			 <label><%= p.radio_button :sexo, false %> Mujer</label>
+		</div>
+		</div>
+	</div>
+
+	
+ </div>
+<%end%>
+
+</div>
+ 
+ 	<div class="col-md-6">
+ 		
+ 	
+ <%= f.label 'Datos de acceso'%></br>
+<div class="row">
+	<div class="col-md-12">
+		<div class="form-group">
+		<%= f.text_field :username,{class:'form-control',placeholder:'Nombre completo'}%>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+		<%= f.password_field :password,{class:'form-control',placeholder:'Contraseña'}%>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+		<%= f.password_field :password_confirmation,{class:'form-control',placeholder:'Confirmar contraseña'}%>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+		<%=f.submit 'Registrarse',{class:'btn btn-info'} %>
+		</div>
+	</div>
+</div>
+ 
+<%end%>
+
+ </div>
+
+</div>
+
+</div>
+</div>
