@@ -1,11 +1,21 @@
 class CategoriesController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user,:validate_admin
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    if(params[:nombre_cat])
+      @categories=Category.where('nombre ILIKE ?',"%#{params[:nombre_cat]}%")
+    else
+      @categories = Category.all
+    end
+
+    respond_to do |format|
+      format.html {render :index, status: :ok}
+      format.json {render json: @categories}
+    end
   end
 
   # GET /categories/1
@@ -52,6 +62,19 @@ class CategoriesController < ApplicationController
     end
   end
 
+  #Actualizar el atributo de destacar de una categoria
+  def update_destacar
+    category=set_category
+    if category.update_attributes(destacar: params[:destacar])
+      respond_to do |format|
+        format.json { head :no_content}
+      end
+    end
+  end
+
+
+
+
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
@@ -62,6 +85,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+
+
+ 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
@@ -70,6 +97,10 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:nombre, :descripcion, :estado)
+      params.require(:category).permit(:nombre, :descripcion, :imagen,:estado)
+    end
+
+    def set_search
+      @categories=Category.where(nombre:params[:nombre_cat])
     end
 end

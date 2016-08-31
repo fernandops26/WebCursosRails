@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebCursos</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="fh5co-page">
+<header id="fh5co-header" role="banner">
+	<div class="container">
+		<div class="header-inner">
+			<h1><a href="index.html">Pronacades</a></h1>
+			<nav role="navigation" >
+				<ul>
+					<li><%= link_to 'Categorias',categories_path%></li>
+					<li><%= link_to 'Cursos',courses_path%></li>
+					<li><a href="pricing.html">Perfil</a></li>
+					<li><a href="contacto">Contacto</a></li>
+					<li class="cta"><a href="#">Perfil</a></li>
+				</ul>
+			</nav>
+		</div>
+		
+	</div>
+
+</header>
+
+<%= yield %>
+
+</div>
+
+
+</body>
+</html>

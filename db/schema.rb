@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822160333) do
+ActiveRecord::Schema.define(version: 20160829222453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,13 @@ ActiveRecord::Schema.define(version: 20160822160333) do
     t.string   "nombre"
     t.text     "descripcion"
     t.boolean  "estado"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+    t.boolean  "destacar"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -69,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160822160333) do
     t.string   "grado_acad"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
 
   add_index "people", ["district_id"], name: "index_people_on_district_id", using: :btree
@@ -88,7 +94,6 @@ ActiveRecord::Schema.define(version: 20160822160333) do
     t.integer  "type_user"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "people_id"
   end
 
   add_foreign_key "courses", "categories"

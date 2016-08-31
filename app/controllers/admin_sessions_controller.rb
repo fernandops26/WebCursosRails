@@ -1,4 +1,6 @@
 class AdminSessionsController < ApplicationController
+
+	layout nil ,:only =>[:new]
  def new
   	@user=User.new
  end

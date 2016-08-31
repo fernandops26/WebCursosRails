@@ -1,3 +1,75 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel-profile .panel-heading					 
+  {
+	height: 150px;
+    background-size: cover;
+}
+
+.panel-profile-img{
+	max-width: 100px;
+    margin-top: -70px;
+    margin-bottom: 5px;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.btn-sm{
+	font-size: 12px;
+    padding: 5px 15px;
+}
+
+.m-b{
+	margin-bottom: 15px !important;
+}
+.panel-title.titulo{
+	font-size: 17px;
+    margin-bottom: 8px;
+    font-weight:bold;
+}
+
+.slick-prev, .slick-next{
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    padding: 0;
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-next {
+    right: -25px;
+}
+.slick-prev {
+    left: -25px;
+}
+
+.slick-prev:before {
+   
+    content: '←';
+}
+
+.slick-next:before {
+     content: '→';
+}
+
+.slick-prev:before, .slick-next:before {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: rgba(#000,.7);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+

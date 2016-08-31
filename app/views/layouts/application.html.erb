@@ -11,21 +11,19 @@
 <header id="fh5co-header" role="banner">
 	<div class="container">
 		<div class="header-inner">
-			<h1><a href="index.html">Flew</a></h1>
+			<h1><%= link_to 'Pronacades',root_path%></h1>
 			<nav role="navigation">
 				<ul>
-					<li><%= link_to 'Inicio',root_path%>
-					<li><a href="services.html">Servicios</a></li>
+					<li><a href="#fh5co-work-section">Servicios</a></li>
 					<li><a href="pricing.html">Precios</a></li>
-					<li><%= link_to 'Registrate!',signup_path%></li>
 					<li><a href="contacto">Contacto</a></li>
-					<li class="cta"><a href="#">Empieza aquí</a></li>
+					<li class="cta"><a href="#">Inicia aquí</a></li>
 				</ul>
 			</nav>
 		</div>
-		<%if @current_user%>
+		<%if current_user%>
 		<div class="container ">
-		<span>Hola, <%=@current_user.username%></span>
+		<span>Hola, <%=current_user.username%></span>
 		</div>
 		<%end%>
 	</div>

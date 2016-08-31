@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
    get 'contacto', to:'static#contact'
 
+   post 'categories/update_destacar', to: 'categories#update_destacar'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

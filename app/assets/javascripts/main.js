@@ -1,3 +1,4 @@
+
 ;(function () {
 	
 	'use strict';
@@ -161,7 +162,7 @@
 
 
 	var contentWayPoint = function() {
-		waypoint.disable();
+		//waypoint.disable();
 		
 		var i = 0;
 		$('.animate-box').waypoint( function( direction ) {
@@ -230,3 +231,5 @@
 
 
 }());
+
+

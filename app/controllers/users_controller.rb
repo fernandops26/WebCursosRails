@@ -18,7 +18,6 @@ class UsersController < ApplicationController
  	@provincias=Province.all
  	@departamentos=Department.all
  	@user=User.new(user_params)
- 	@user.person=Person.new(person_params)
  	@user.type_user=2
  	if @user.save
  		log_in_user(@user)

@@ -11,11 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= requieren jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require user.coffee
-//= require_tree .
+//= require selectize
+//= require jquery.slick
+//= require_tree
 
 
 $('#user_person_province_id').hide();

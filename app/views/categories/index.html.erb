@@ -1,31 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Categories</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Estado</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.nombre %></td>
-        <td><%= category.descripcion %></td>
-        <td><%= category.estado %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 ">
+      <h1>Lista de Categorias</h1>
+      <%= form_tag categories_path, method: :get,remote:true,'data-type' => :json do %>
+        <div class="form-group">
+          <%= text_field_tag :filtro_categoria, params[:nombre_cat], class: "form-control", placeholder: "Filtrar Categoria" %>
+        </div>
+       
+      <% end %>
+      <%= link_to 'Nueva Categoria', new_category_path ,class:'btn btn-success'%>
+
+      <h4>Las sgtes se muestran en la pag. principal:</h4>
+
+      <div class="row">
+      <div class="col-sm-12">
+        <form class="form-horizontal">
+          <div class="form-group">
+          </div>
+        </form>
+      </div>
+        <div class="col-sm-12">
+          <%= text_field_tag :lista_categorias%>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="col-md-8">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody id="cuerpo_tabla_categorias">
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.nombre %></td>
+              <td><%= category.descripcion %></td>
+              <td>
+              <%if category.estado %>
+                Activo
+              <%else%>
+                Inactivo
+              <%end%>
+                
+
+              </td>
+              <td><%= link_to 'Show', category %></td>
+              <td><%= link_to 'Edit', edit_category_path(category) %></td>
+              <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+

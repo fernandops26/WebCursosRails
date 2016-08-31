@@ -1,5 +1,5 @@
 jQuery ->
-	#almacenar todos lo combos
+		#almacenar todos lo combos
 	combo_provincias=$('#user_person_province_id');
 	combo_departamentos=$('#user_person_department_id');
 	combo_distritos=$('#user_person_district_id');
@@ -45,5 +45,5 @@ jQuery ->
 		combo_distritos.show();
 		padre_cb_distritos.show();
 	
-			
+				
 

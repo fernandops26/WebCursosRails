@@ -6,33 +6,33 @@
 	<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
-		   	<li style="background-image: url(assets/slide_1.jpg);">
+		   	<li style="background-image: url(<%=asset_path 'carrousel1.jpg'%>);">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
 		   				<div class="slider-text-inner">
-		   					<h2>Start Your Startup With This Template</h2>
-		   					<p><a href="#" class="btn btn-primary btn-lg">Get started</a></p>
+		   					<h2>Complementa Tus Conocimientos a Corto Plazo</h2>
+		   					<p><a href="#" class="btn btn-primary btn-lg">Registrate!</a></p>
 		   				</div>
 		   			</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(assets/slide_2.jpg);">
+		   	<li style="background-image: url(<%=asset_path 'carrousel3.jpg' %>);">
 		   		<div class="container">
 		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
 		   				<div class="slider-text-inner">
-		   					<h2>Take Your Business To The Next Level</h2>
-		   					<p><a href="#" class="btn btn-primary btn-lg">Get started</a></p>
+		   					<h2>Aprende Desde Cualquier Lugar..No hay Límites</h2>
+		   					<p><a href="#" class="btn btn-primary btn-lg">Registrate!</a></p>
 		   				</div>
 		   			</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(assets/slide_3.jpg);">
+		   	<li style="background-image: url(<%=asset_path 'carrousel4.jpg'%>);">
 		   		<div class="container">
 		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
 		   				<div class="slider-text-inner">
-		   					<h2>We Think Different That Others Can't</h2>
-		   					<p><a href="#" class="btn btn-primary btn-lg">Get started</a></p>
+		   					<h2>Obtén un Diplomado y Marca la Diferencia</h2>
+		   					<p><a href="#" class="btn btn-primary btn-lg">Registrate!</a></p>
 		   				</div>
 		   			</div>
 		   		</div>
@@ -44,65 +44,25 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading ">
-					<h2>Our Awesome Features</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+					<h2>Especializaciones en Diferentes Rubros </h2>
+					<p>Tienes disponible un abanico de posibilidades laborales por eso te ofrecemos cursos categorizados estrategicamente para tu conveniencia </p>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" >
+				<% @categorias.each do |cat|%>
 				<div class="col-md-4 ">
-					<div class="services">
-						<i class="icon-laptop"></i>
-						<div class="desc">
-							<h3>Dashboard</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+					<div class="services" style="">
+						<div style="width:60px;display:inline-block;position:absolute;top:20px">
+						<%= image_tag cat.imagen.url(:mini),class:'img img-thumbnail' %>
+						</div>
+						<div class="desc" style="display:inline-block">
+							<h3><%=cat.nombre%></h3>
+							<p><%=cat.descripcion%></p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 ">
-					<div class="services">
-						<i class="icon-server"></i>
-						<div class="desc">
-							<h3>Administration</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="services">
-						<i class="icon-money"></i>
-						<div class="desc">
-							<h3>Make Money</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="services">
-						<i class="icon-tablet"></i>
-						<div class="desc">
-							<h3>SEO Monitoring</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="services">
-						<i class="icon-line-chart"></i>
-						<div class="desc">
-							<h3>Online Marketing</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ">
-					<div class="services">
-						<i class="icon-pie-chart"></i>
-						<div class="desc">
-							<h3>Business Analytics</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-						</div>
-					</div>
-				</div>
+				<%end%>
+				
 			</div>
 		</div>
 	</div>
@@ -117,159 +77,77 @@
 			<div class="row">
 			<%@cursos.each do |curso|%>
 					<div class="col-md-4 ">
-						<a href="#" class="item-grid text-center">
-							<div class="image" style="background-image: url(<%=curso.imagen.url(:thumb)%>)"></div>
-							<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title"><%=curso.titulo%></h3>
-								<h5 class="category"><%=curso.category.nombre%></h5>
+						<div class="panel panel-default panel-profile m-b-0">
+							<div class="panel-heading" style="background-image: url(<%=curso.imagen.url(:thumb)%>)">
+								
 							</div>
+							<div class="panel-body text-center">
+							<img src=<%=asset_path 'book.png'%> class="panel-profile-img" alt="">
+							
+								<h5 class="panel-title titulo"><%=curso.titulo%></h5>
+								<p class="m-b"><%=curso.contenido%></p>
+								<a href="#" class="btn btn-info btn-primary-outline btn-sm m-b">
+									<span class="icon icon-add-user"></span>
+									Ver curso
+								</a>
+							
 						</div>
-					</a>
+					</div>
 				</div>
 			<%end%>
 
 			<div class="col-md-12 text-center ">
-					<p><a href="#" class="btn btn-primary with-arrow">Ver todos los Cursos<i class="icon-arrow-right"></i></a></p>
+					<p><a href="#" class="btn btn-primary with-arrow">Ver todos!<i class="icon-arrow-right"></i></a></p>
 				</div>
 
 			</div>
 
 		</div>
 	</div>
-	<div id="fh5co-testimony-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading ">
-					<h2>Clients Feedback</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-offset-0 to-animate">
-					<div class="wrap-testimony ">
-						<div class="owl-carousel-fullwidth">
-							<div class="item">
-								<div class="testimony-slide active text-center">
-									<figure>
-										<img src="images/person1.jpg" alt="user">
-									</figure>
-									<blockquote>
-										<p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-									</blockquote>
-									<span>Athan Smith, via <a href="#" class="twitter">Twitter</a></span>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony-slide active text-center">
-									<figure>
-										<img src="images/person2.jpg" alt="user">
-									</figure>
-									<blockquote>
-										<p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-									</blockquote>
-									<span>Nathalie Kosley, via <a href="#" class="twitter">Twitter</a></span>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony-slide active text-center">
-									<figure>
-										<img src="images/person3.jpg" alt="user">
-									</figure>
-									<blockquote>
-										<p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
-									</blockquote>
-									<span>Yanna Kuzuki, via <a href="#" class="twitter">Twitter</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="fh5co-blog-section" class="fh5co-light-grey-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading ">
-					<h2>Recent from Blog</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-6 ">
-					<a href="#" class="item-grid">
-						<div class="image" style="background-image: url(images/image_1.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">We Create Mobile App</h3>
-								<h5 class="date"><span>June 23, 2016</span> | <span>4 Comments</span></h5>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-6 col-sm-6 ">
-					<a href="#" class="item-grid">
-						<div class="image" style="background-image: url(images/image_2.jpg)"></div>
-						<div class="v-align">
-							<div class="v-align-middle">
-								<h3 class="title">Geographical App</h3>
-								<h5 class="date"><span>June 22, 2016</span> | <span>10 Comments</span></h5>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-12 text-center ">
-					<p><a href="#" class="btn btn-primary with-arrow">View More Post <i class="icon-arrow-right"></i></a></p>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<div id="fh5co-pricing-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading ">
-					<h2>Pricing</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+					<h2>Precios</h2>
+					<p>Se acabaron las excusas, elige un plan que se adecue a tus necesidades </p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="pricing">
 					<div class="col-md-3 ">
 						<div class="price-box">
-							<h2 class="pricing-plan">Starter</h2>
-							<div class="price"><sup class="currency">$</sup>9<small>/month</small></div>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+							<h2 class="pricing-plan">Iniciante</h2>
+							<div class="price"><sup class="currency">$</sup>9<small>/mes</small></div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, explicabo, accusantium? Quibusdam quo aliquid </p>
 							<a href="#" class="btn btn-select-plan btn-sm">Select Plan</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
 						<div class="price-box">
-							<h2 class="pricing-plan">Basic</h2>
-							<div class="price"><sup class="currency">$</sup>27<small>/month</small></div>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-							<a href="#" class="btn btn-select-plan btn-sm">Select Plan</a>
+							<h2 class="pricing-plan">Básico</h2>
+							<div class="price"><sup class="currency">$</sup>27<small>/mes</small></div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident sapiente voluptas laborum distinctio ullam, quod id asdsa</p>
+							<a href="#" class="btn btn-select-plan btn-sm">Seleccionar!</a>
 						</div>
 					</div>
 
 					<div class="col-md-3 ">
 						<div class="price-box popular">
-							<h2 class="pricing-plan pricing-plan-offer">Pro <span>Best Offer</span></h2>
-							<div class="price"><sup class="currency">$</sup>74<small>/month</small></div>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-							<a href="#" class="btn btn-select-plan btn-sm">Select Plan</a>
+							<h2 class="pricing-plan pricing-plan-offer">Pro <span>Mejor Oferta</span></h2>
+							<div class="price"><sup class="currency">$</sup>74<small>/mes</small></div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo placeat, magni iure reiciendis, a iste beatae sit non asass let miaressa</p>
+							<a href="#" class="btn btn-select-plan btn-sm">Seleccionar!</a>
 						</div>
 					</div>
 
 					<div class="col-md-3 ">
 						<div class="price-box">
-							<h2 class="pricing-plan">Unlimited</h2>
-							<div class="price"><sup class="currency">$</sup>140<small>/month</small></div>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-							<a href="#" class="btn btn-select-plan btn-sm">Select Plan</a>
+							<h2 class="pricing-plan">Ilimitado</h2>
+							<div class="price"><sup class="currency">$</sup>140<small>/mes</small></div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus dolor rerum aspernatur nemo inventore tempora. </p>
+							<a href="#" class="btn btn-select-plan btn-sm">Seleccionar!</a>
 						</div>
 					</div>
 				</div>
@@ -277,12 +155,72 @@
 		</div>
 	</div>
 
-	<div class="fh5co-cta" style="background-image: url(images/slide_2.jpg);">
+	<div id="fh5co-testimony-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading ">
+					<h2>Nuestros convenios</h2>
+					<p> Tenemos alianzas con las más prestigiosas Universidades del País, que unidos te ofrecemos la mejor experiencia educativa</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-offset-0 to-animate">
+					<div class="wrap-testimony well ">
+						<div class="row" style="padding:3em 3em;">
+							<div class="carrosel-afiliados" style="border:1px solid #fff;">
+								<div class="div" style="margin:10px">
+									<div style="">
+										<img src=<%=asset_path 'unmsm.png'%> style="max-width:100%;height:auto;" alt="">
+									</div>
+									<h5 class="text-center">Universidad Nacional Mayor de San Marcos</h5>
+								</div>
+								<div class="div" style="margin:10px;">
+									<div style="">
+										<img src=<%=asset_path 'unt.png'%> style="max-width:100%;height:auto;" alt="">
+									</div>
+										
+									<h5 class="text-center">Universidad Nacional de Trujillo</h5>
+								</div>
+								<div class="div" style="margin:10px;">
+									<div style="">
+										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
+									</div>
+									<h5 class="text-center"> Aqui el nombre de la institución</h5>
+								</div>
+								<div class="div" style="margin:10px";>
+									<div style="">
+										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
+									</div>
+									<h5 class="text-center"> Aqui el nombre de la institución</h5>
+								</div>
+								<div class="div" style="margin:10px">
+									<div style="">
+										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
+									</div>
+									<h5 class="text-center"> Aqui el nombre de la institución</h5>
+								</div>
+								<div class="div" style="margin:10px">
+									<div style="">
+										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
+									</div>
+									<h5 class="text-center"> Aqui el nombre de la institución</h5>
+								</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+
+	<div class="fh5co-cta" style="background-image: url(<%=asset_path 'slide_2.jpg'%>);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="col-md-12 text-center ">
-				<h3>We Try To Update The Site Everyday</h3>
-				<p><a href="#" class="btn btn-primary btn-outline with-arrow">Get started now! <i class="icon-arrow-right"></i></a></p>
+				<h3>Confía en tu futuro, confía en PRONACADES</h3>
+				<p><a href="#" class="btn btn-primary btn-outline with-arrow">Registrate ahora! <i class="icon-arrow-right"></i></a></p>
 			</div>
 		</div>
 	</div>
@@ -292,29 +230,22 @@
 	
 		<div class="container">
 			<div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				<h3>About Us</h3>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-				<p><a href="#" class="btn btn-primary btn-outline with-arrow btn-sm">Join Us <i class="icon-arrow-right"></i></a></p>
+				<h3>Sobre Nosotros</h3>
+				<p>Somos una empresa dedicada a ofrecer diplomados, para ello nos aliamos con Instituciones de primer nivel. </p>
+				<p><a href="#" class="btn btn-primary btn-outline with-arrow btn-sm">Registrate <i class="icon-arrow-right"></i></a></p>
 			</div>
 			<div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				<h3>Our Services</h3>
+				<h3>Nuestros Servicios</h3>
 				<ul class="float">
-					<li><a href="#">Web Design</a></li>
-					<li><a href="#">Branding &amp; Identity</a></li>
-					<li><a href="#">Free HTML5</a></li>
-					<li><a href="#">HandCrafted Templates</a></li>
-				</ul>
-				<ul class="float">
-					<li><a href="#">Free Bootstrap Template</a></li>
-					<li><a href="#">Free HTML5 Template</a></li>
-					<li><a href="#">Free HTML5 &amp; CSS3 Template</a></li>
-					<li><a href="#">HandCrafted Templates</a></li>
+					<li><a href="#">Diplomados</a></li>
+					<li><a href="#">Maestrías</a></li>
+					<li><a href="#">Doctorados</a></li>
 				</ul>
 
 			</div>
 
 			<div class="col-md-2 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				<h3>Follow Us</h3>
+				<h3>Siguenos en</h3>
 				<ul class="fh5co-social">
 					<li><a href="#"><i class="icon-twitter"></i></a></li>
 					<li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -325,7 +256,7 @@
 			
 			
 			<div class="col-md-12 fh5co-copyright text-center">
-				<p>&copy; 2016 Free HTML5 template. All Rights Reserved. <span>Designed with <i class="icon-heart"></i> by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images by <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></p>	
+				<p>&copy; 2016. Todos los Derechos Reservados. <span>Realizado por<i class="icon-heart"></i>  <a href="http://freehtml5.co/" target="_blank">Gcode.ln</a> </span></p>	
 			</div>
 			
 		</div>

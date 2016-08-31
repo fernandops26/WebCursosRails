@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_user, :validate_admin
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 

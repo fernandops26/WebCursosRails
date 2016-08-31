@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
-	has_one :person
-	accepts_nested_attributes_for :person
+	
 
 	validates :username, presence: true, uniqueness: true, length:{minimum:8}
 	validates :password, presence: true, length: {in: 6..12}
 	has_secure_password
+
+	has_one :person, dependent: :destroy
+	accepts_nested_attributes_for :person
 
 
 	#atributo virtual
