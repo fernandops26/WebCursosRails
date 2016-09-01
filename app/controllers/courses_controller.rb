@@ -6,7 +6,16 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    if(params[:titulo_cur])
+      @courses=Course.where('titulo ILIKE ?',"%#{params[:titulo_cur]}%")
+    else
+      @courses = Course.all
+    end
+
+    respond_to do |format|
+      format.html {render :index, status: :ok}
+      format.json {render json: @courses.to_json(:include => :category)}
+    end
   end
 
   # GET /courses/1
