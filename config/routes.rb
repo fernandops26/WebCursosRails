@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   get 'home', to: 'users#index'
-  delete 'logout', to: 'user_sessions#destroy'
+  get 'logout', to: 'user_sessions#destroy'
 
   #rutas de admin
   get 'admin/login', to:'admin_sessions#new'

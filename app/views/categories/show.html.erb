@@ -1,23 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="fh5co-contact ">
+<div class="container ">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<p id="notice"><%= notice %></p>
+				<form class="form well">
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+						  <label class=" control-label">Nombre</label>
+							<div class="col-sm-12">
+						      <p class="form-control-static"><%= @category.nombre %></p>
+							</div>
+						</div>
+						<div class="form-group">
+						  <label class="control-label">Descripción</label>
+							<div class="col-sm-12">
+						      <p class="form-control-static"><%= @category.descripcion %></p>
+							</div>
+						</div>
+						
+						<div class="form-group">
+						  <label class="control-label">Estado</label>
+							<div class="col-sm-12">
+						      <p class="form-control-static">
+						      <% if @category.estado==true %>
+						      	Activo
+						      <%elsif%>
+										Inactivo
+									<%end%>
+						      </p>
+							</div>
+						</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @category.nombre %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @category.descripcion %>
-</p>
-
-<p>
-  <strong>Imagen:</strong>
-  <%= image_tag @category.imagen.url(:mini) %>
-</p>
-<p>
-  <strong>Estado:</strong>
-  <%= @category.estado %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+					</div>
+					<div class="col-xs-6">
+							<div class="form-group">
+							  <label class="control-label">Imagen</label>
+							  <%= image_tag @category.imagen.url(:mini) ,class:'img-thumbnail'%>
+						  </div>
+					</div>
+				</div>
+				
+				<%= link_to 'Editar', edit_category_path(@category) %> |
+				<%= link_to 'Regresar', categories_path %>
+				</form>
+		</div>
+	</div>
+</div>
+</div>

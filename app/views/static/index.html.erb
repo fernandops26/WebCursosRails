@@ -1,7 +1,13 @@
 
 	
 	<div class="container">
-		
+			<%unless current_user%>
+				<div class="row">
+					<div class="col-sm-12">
+						<span><%= link_to 'Inicia sesión' , login_url%></span>
+					</div>
+				</div>
+				<%end%>
 	</div>
 	<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
