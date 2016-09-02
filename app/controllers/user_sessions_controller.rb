@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
  def new
+ 	flash[:erorrs]=""
   	@user=User.new
  end
 
@@ -11,7 +12,11 @@ class UserSessionsController < ApplicationController
  		params[:session_user][:remember_me]=="1" ? remember(user): forget(user)
  		redirect_to home_path
  	else
- 		flash[:errors]=user.errors.full_messages
+ 		if !user.nil?
+ 			flash[:errors]="Usuario o contraseña correcta"
+ 		else
+ 			flash[:errors]="El usuario no existe"
+ 		end
  		render :new
  	end
  end

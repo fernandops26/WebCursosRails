@@ -1,4 +1,4 @@
-
+<div class="panel">
 <%= form_for([@course]) do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
@@ -12,31 +12,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :titulo %><br>
-    <%= f.text_field :titulo %>
+  <%= f.label :titulo %>
+  <div class="form-group">
+    <%= f.text_field :titulo, class:'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :contenido %><br>
-    <%= f.text_area :contenido %>
+  <%= f.label :contenido %><br>
+  <div class="form-group">
+    <%= f.text_area :contenido, class:'form-control',rows:'4' %>
   </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.select :category_id , options_from_collection_for_select(@categorias, "id", "nombre")%>
+    <%= f.label 'Categoria' %>
+  <div class="form-group">
+    <%= f.select :category_id , options_from_collection_for_select(@categorias, "id", "nombre"),{},{class:'form-control'}%>
   </div>
-  <div class="field">
-    <%= f.label :fecha %><br>
+    <%= f.label :fecha %>
+  <div class="form-group">
     <%= f.date_select :fecha %>
   </div>
-  <div class="field">
     <%= f.label :estado %><br>
+  <div class="form-group">
     <%= f.check_box :estado %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :imagen%>
     <%= f.file_field :imagen %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit 'Guardar', {class:'btn btn-success'} %>
   </div>
 <% end %>

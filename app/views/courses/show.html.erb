@@ -1,34 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="fh5co-contact ">
+<div class="container ">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <p id="notice"><%= notice %></p>
+        <form class="form well">
+          <div class="row">
+            <div class="col-xs-6">
 
-<p>
-  <strong>Titulo:</strong>
-  <%= @course.titulo %>
-</p>
+            <div class="form-group">
+              <label class=" control-label">Titulo</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%= @course.titulo %></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Contenido</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%=  @course.contenido %></p>
+              </div>
+            </div>
 
-<p>
-  <strong>Contenido:</strong>
-  <%= @course.contenido %>
-</p>
+            <div class="form-group">
+              <label class="control-label">Categoria</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%=  @course.category.nombre %></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Fecha. Inicio</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%= @course.fecha %></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Estado</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static">
+                  <% if @course.estado==true %>
+                    Activo
+                  <%elsif%>
+                    Inactivo
+                  <%end%>
+                  </p>
+              </div>
+            </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @course.category.nombre %>
-</p>
+            </div>
+          <div class="col-xs-6">
+              <div class="form-group">
+                <label class="control-label">Imagen</label>
+                <%= image_tag @course.imagen.url(:thumb) ,class:'img-thumbnail'%>
+              </div>
+          </div>
+        </div>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @course.fecha %>
-</p>
-
-<p>
-  <strong>Estado:</strong>
-  <%= @course.estado %>
-</p>
-
-<p>
-  <strong>Imagen:</strong>
-  <%= image_tag @course.imagen.url(:thumb) %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Editar', edit_course_path(@course) %> |
+<%= link_to 'Regresar', courses_path %>
+</form>
+</div>
+  </div>
+</div>
+</div>

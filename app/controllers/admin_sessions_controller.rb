@@ -2,6 +2,7 @@ class AdminSessionsController < ApplicationController
 
 	layout nil ,:only =>[:new]
  def new
+ 	flash[:erorrs]=""
   	@user=User.new
  end
 
@@ -16,7 +17,6 @@ class AdminSessionsController < ApplicationController
  			flash[:errors]="Usuario o contraseña inválido"
  		else
  			flash[:errors]="El usuario no existe"
- 			puts flash[:errors]
  		end
  		render :new
  	end
