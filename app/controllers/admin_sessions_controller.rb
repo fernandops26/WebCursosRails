@@ -12,7 +12,12 @@ class AdminSessionsController < ApplicationController
  		log_in_user(user)
  		redirect_to admin_home_path
  	else
- 		flash[:errors]=user.errors.full_messages
+ 		if !user.nil?
+ 			flash[:errors]="Usuario o contraseña inválido"
+ 		else
+ 			flash[:errors]="El usuario no existe"
+ 			puts flash[:errors]
+ 		end
  		render :new
  	end
  end
