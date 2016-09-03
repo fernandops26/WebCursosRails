@@ -28,8 +28,15 @@ Rails.application.routes.draw do
    root 'static#index'
 
    get 'contacto', to:'static#contact'
+   post 'contacto', to:'static#create_query_contact'
 
    post 'categories/update_destacar', to: 'categories#update_destacar'
+
+   get 'management/contact', to:'contact_queries#index'
+
+   get 'management/contact/:id', to:'contact_queries#show'
+
+   post 'management/contact/update_leido', to: 'contact_queries#update_leido'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

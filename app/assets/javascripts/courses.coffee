@@ -65,7 +65,7 @@ $(document).ready ->
     celda3 = document.createElement('td')
     celda3.appendChild document.createTextNode(cur.category.nombre)
     celda4 = document.createElement('td')
-    celda4.appendChild document.createTextNode(cur.category.fecha)
+    celda4.appendChild document.createTextNode(cur.fecha)
     celda5 = document.createElement('td')
     estado = '-'
     if cur.estado == true

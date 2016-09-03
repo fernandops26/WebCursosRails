@@ -1,13 +1,29 @@
-<div class="fh5co-contact animate-box">
+<div class="fh5co-contact animate-box" style="padding-top:0">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-md-push-2 animate-box">
+					<div class="alert alert-succes">
+						<strong id="notice"><%= notice %></strong>
+					</div>
+					
+
+					<% if @consulta.errors.any? %>
+				    <div id="error_explanation" class="alert alert-danger">
+				      <h4><strong>La operación no se ha realizado debido a:</strong></h4>
+
+				      <ul>
+				      <% @consulta.errors.full_messages.each do |message| %>
+				        <li><%= message%></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
 					<h2>Detalles de contacto</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto nostrum fuga soluta numquam cum, dolor inventore corrupti laudantium impedit pariatur necessitatibus iure mollitia minus dolorem nulla illum corporis praesentium saepe.</p><br><br>
 
 				</div>
 				<div class="col-md-3">
-					<h3>Información de cotacto</h3>
+					<h3>Información de contacto</h3>
 					<ul class="contact-info">
 						<li><i class="glyphicon glyphicon-map-marker"></i>Alguna direccion, Piura</li>
 						<li><i class="glyphicon glyphicon-earphone"></i>(#) 073-630693//920111091//938566519</li>
@@ -16,39 +32,42 @@
 					</ul>
 				</div>
 				<div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<%= form_for @consulta,url:'contacto' do |f|%>
 					<div class="row">
-						<div class="col-md-6 col-sm-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" placeholder="Nombres" type="text">
+							<%=f.text_field :nombres, {placeholder:'Nombres',class:'form-control'}%>
+								
 							</div>
 						</div>
-						<div class="col-md-6 col-sm-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" placeholder="Apellidos" type="text">
+							<%=f.text_field :apellidos,{placeholder:'Apellidos',class:'form-control'}%>
 							</div>
 						</div>
-						<div class="col-md-8 col-sm-8">
+						<div class=" col-sm-8">
 							<div class="form-group">
-								<input class="form-control" placeholder="Correo" type="text">
+							<%=f.email_field :email, {placeholder:'Email',class:'form-control'}%>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4">
+						<div class="col-sm-4">
 							<div class="form-group">
-								<input class="form-control" placeholder="Telefono" type="text">
+							<%=f.text_field :telefono, {placeholder:'Telefono',class:'form-control'}%>
 							</div>
 						</div>
-						
-						<div class="col-md-12">
+						<div class="col-sm-12">
 							<div class="form-group">
-								<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Mensaje"></textarea>
+								<%=f.text_area :mensaje, {placeholder:'Escribe tu consulta',class:'form-control',rows:6}%>
 							</div>
 						</div>
-						<div class="col-md-12">
+
+						<div class="col-sm-12">
 							<div class="form-group">
-								<input value="Enviar mensaje" class="btn btn-primary" type="submit">
+							<%=f.submit 'Enviar mensaje' , {class:'btn btn-info'}%>
 							</div>
 						</div>
 					</div>
+					<%end%>
 				</div>
 			</div>
 		</div>	

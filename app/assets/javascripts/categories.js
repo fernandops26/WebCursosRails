@@ -89,7 +89,8 @@ $(document).ready(function(){
       return $.get('/categories', {
         nombre_cat: ''
       }, (function(data) {
-      	var cat_destacadas=obtenerSeleccionados(data);
+      	var cat_destacadas=limpiarDatosCategorias(data,2);
+        var opciones_activas=limpiarDatosCategorias(data,1);
 
         lista.selectize({
           create: false,
@@ -98,47 +99,52 @@ $(document).ready(function(){
           searchField: 'nombre',
           maxItems: 6,
           maxOptions: 4,
-          options: data,
+          options: opciones_activas,
           items:cat_destacadas,
           onItemRemove:function(id_item){
           	$.post('/categories/update_destacar', {id: id_item,destacar:false}, (function(data) {
-          		console.log("Valor cambiado");
-          		console.log('Respuesta: '+data);
+
           	}),'json');
 	        this.refreshItems()
           },
           onItemAdd:function(id_item,item){
 	        $.post('/categories/update_destacar', {id: id_item,destacar:true}, (function(data) {
-          		console.log("Valor cambiado");
-          		console.log('Respuesta: '+data);
+          		
           	}),'json');
           	this.refreshItems()
           },
           onChange:function(){
-          	console.log("Datos cambiados");
 
           }
         });
 
       }), 'json');
 
-		
-	
-        
-
-
 });
 
 //Limpia la data para obtener solo las categorias destacadas
-var obtenerSeleccionados=function(data){
+var limpiarDatosCategorias=function(data,accion){
 	var obj=[];
-	for(var i=0;i<data.length;i++){
-		if(data[i].destacar==true){
-			//Se requiren solo los id's
-			obj.push(data[i].id);
-		}
-	}
+  if(accion==1){
+    for(var i=0;i<data.length;i++){
+      
+      if(data[i].estado==true){
+        //Se requiren el objeto completo
+        obj.push(data[i]);
+      }
+    }
+  }else{
+    for(var i=0;i<data.length;i++){
+      if(data[i].destacar==true && data[i].estado==true){
+        //Se requiren solo los id's
+        obj.push(data[i].id);
+      }
+    }
+  }
 	return obj;
 }
+
+
+
 
  

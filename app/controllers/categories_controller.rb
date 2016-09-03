@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     if(params[:nombre_cat])
       @categories=Category.where('nombre ILIKE ?',"%#{params[:nombre_cat]}%")
     else
-      @categories = Category.all
+      @categories = Category.all.order('nombre asc')
     end
 
     respond_to do |format|

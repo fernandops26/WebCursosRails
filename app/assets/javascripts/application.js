@@ -17,6 +17,8 @@
 //= require user.coffee
 //= require selectize
 //= require jquery.slick
+//= require moment
+//= require moment/es.js
 //= require_tree
 
 

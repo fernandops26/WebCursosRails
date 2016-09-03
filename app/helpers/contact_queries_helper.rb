@@ -1,0 +1,2 @@
+module ContactQueriesHelper
+end

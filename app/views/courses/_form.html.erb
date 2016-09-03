@@ -2,7 +2,7 @@
 <%= form_for([@course]) do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <h2><%= pluralize(@course.errors.count, "error") %> La operación no se ha realizado debido a:</h2>
 
       <ul>
       <% @course.errors.full_messages.each do |message| %>
@@ -18,7 +18,7 @@
   </div>
   <%= f.label :contenido %><br>
   <div class="form-group">
-    <%= f.text_area :contenido, class:'form-control',rows:'4' %>
+    <%= f.text_area :contenido,{ class:'form-control',rows:4} %>
   </div>
     <%= f.label 'Categoria' %>
   <div class="form-group">

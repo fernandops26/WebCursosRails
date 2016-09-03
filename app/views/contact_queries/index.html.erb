@@ -1,0 +1,57 @@
+<div class="fh5co-contact animate-box" style="padding-top:0">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-12">
+			<h3>Mensajes de Contacto</h3>
+		</div>
+		
+		<div class="col-md-4">
+                   
+                   <input type="search" placeholder="Buscar por nombres" class="form-control mail-search" id="filtro_mensajes_nombres"/>
+                   
+                   <ul class="mail-list" id="mail-list">
+                   <% @consultas.each do |query|%>
+                       <li class="mail-li">
+                           <a href="#" class="mail-item" data-id=<%=query.id%>>
+                           		<%if query.leido==false %>
+	                           		<span class="label label-nuevo" >		nuevo
+	                           		</span>
+	                           	<%end%>
+	                           		 <span class="mail-subject text-right" ><%=query.created_at.strftime("%d/%m/%Y - %I:%M:%S %p")%>
+	                           		 </span>
+	                               <span class="mail-sender"><%=query.nombres%> <%=query.apellidos%>
+	                               </span>
+	                               <span class="mail-message-preview"><%=query.email%>
+	                               </span>
+                           </a>
+                       </li>
+                    <%end%>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+               	
+									<div class="panel-group panel-mensaje-detalle" >
+		                <div class="panel panel-default">
+		                    <div class="panel-heading" >
+		                        <h4 class="panel-title">
+		                            <a id="mensaje-detalle_nombres" >
+		                                Fernando Palacios Sánchez
+		                            </a>
+		                        </h4>
+		                    </div>
+		                    <div>
+		                        <div class="panel-body">
+		                        		<h5 id="mensaje-detalle_correo">f.499@hotmail.com </h5>
+
+		                        		<h6>telf. <span id="mensaje-detalle_telefono">945636806</span></h6>
+																<p id="mensaje-detalle_mensaje">
+		                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lacinia lacinia mauris, at ultricies leo ornare nec. Vivamus eu est vel felis dignissim tempor. Nulla facilisi. Duis molestie tortor ac tempor volutpat. Phasellus nec mi aliquet, sollicitudin neque eget, consectetur libero. Vestibulum sollicitudin sapien libero, egestas tempus eros scelerisque eu.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                </div>
+               </div>
+
+		</div>
+	</div>
+</div>
