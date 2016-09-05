@@ -465,6 +465,8 @@ h1, h2, h3, h4, h5, h6, figure {
 	nav {
 		float: right;
 		padding: 0;
+		position: relative;
+		z-index: 50000;
 		@media screen and (max-width: $screen-sm) {
 			display: none;
 		}
@@ -574,7 +576,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 				  > ul.sublista{
 					position: absolute;
-					top:20px;
+					top:15px;
 					z-index: 2000;
 					background: rgba(#aaa,.05);
 					display: none;
