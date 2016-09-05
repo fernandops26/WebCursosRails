@@ -1,0 +1,31 @@
+<div class="fh5co-contact " style="padding-top:0">
+	<div class="container ">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-4">
+				<p id="notice"><%= notice %></p>
+
+					<h3>Información de Institución</h3>
+					<form class="form well">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+								  <label class=" control-label">Razon Social</label>
+									<div class="col-sm-12">
+								      <p class="form-control-static"><%= @institution.razon%></p>
+									</div>
+								</div>
+								<div class="form-group">
+									  <label class="control-label">Imagen</label>
+									  <div class="col-sm-12 m-b" style="">
+									  <%= image_tag @institution.imagen.url(:mini) ,{class:'img-thumbnail',style:'margin-left:1em;display:block;'}%>
+									  </div>
+								 </div>
+							</div>
+						</div>
+						<%= link_to 'Editar', edit_institution_path(@institution) %> |
+						<%= link_to 'Regresar', institutions_path %>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

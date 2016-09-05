@@ -1,0 +1,37 @@
+
+<div class="container">
+  <div class="row">
+
+<div class="col-md-4 ">
+  <p id="notice"><%= notice %></p>
+<h1>Lista de Modalidades</h1>
+    <p> Las modalidades indican la forma en que se va a dictar un curso, brinda opciones al estudiante y permite mas posibilidades de acceso a la educación.</p>
+
+<%= link_to 'Nueva modalidad', new_modality_path,class:'btn btn-success' %>
+</div>
+<div class="col-md-8" >
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modalities.each do |modality| %>
+      <tr>
+        <td><%= modality.nombremod %></td>
+        <td><%= link_to 'Ver', modality %></td>
+        <td><%= link_to 'Editar', edit_modality_path(modality) %></td>
+        <td><%= link_to 'Eliminar', modality, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+

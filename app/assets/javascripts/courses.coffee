@@ -20,7 +20,7 @@ $(document).ready ->
     if !force and cadena.length < 3
       return
     params = titulo_cur: cadena
-    $.get '/courses', { titulo_cur: cadena }, ((data) ->
+    $.get '/management/courses', params, ((data) ->
 	  			console.log(data)
       $('#cuerpo_tabla_cursos').empty()
       filtrarCursos data
@@ -75,17 +75,17 @@ $(document).ready ->
     celda5.appendChild document.createTextNode(estado)
     celda6 = document.createElement('td')
     link_a = document.createElement('a')
-    link_a.href = '/courses/' + cur.id
+    link_a.href = '/management/courses/' + cur.id
     link_a.innerHTML = 'Ver'
     celda6.appendChild link_a
     celda7 = document.createElement('td')
     link_b = document.createElement('a')
-    link_b.href = '/courses/' + cur.id + '/edit'
+    link_b.href = '/management/courses/' + cur.id + '/edit'
     link_b.innerHTML = 'Editar'
     celda7.appendChild link_b
     celda8 = document.createElement('td')
     link_c = document.createElement('a')
-    link_c.href = '/courses/' + cur.id
+    link_c.href = '/management/courses/' + cur.id
     link_c.dataset.method = 'delete'
     link_c.rel = 'nofollow'
     link_c.innerHTML = 'Eliminar'

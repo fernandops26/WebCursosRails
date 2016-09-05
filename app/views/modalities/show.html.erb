@@ -1,0 +1,25 @@
+<div class="fh5co-contact " style="padding-top:0">
+	<div class="container ">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-4">
+				<p id="notice"><%= notice %></p>
+				<h3>Información de Institución</h3>
+							<form class="form well">
+								<div class="row">
+									<div class="col-sm-12">
+									<div class="form-group">
+									  <label class=" control-label">Nombre</label>
+										<div class="col-sm-12">
+									      <p class="form-control-static"><%=@modality.nombremod%></p>
+										</div>
+									</div>
+							</div>
+						</div>
+				<%= link_to 'Editar', edit_modality_path(@modality) %> |
+				<%= link_to 'Regresar', modalities_path %>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

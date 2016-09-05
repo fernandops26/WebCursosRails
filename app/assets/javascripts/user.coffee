@@ -1,8 +1,8 @@
 jQuery ->
 		#almacenar todos lo combos
-	combo_provincias=$('#user_person_province_id');
-	combo_departamentos=$('#user_person_department_id');
-	combo_distritos=$('#user_person_district_id');
+	combo_provincias=$('#province_province_id');
+	combo_departamentos=$('#department_id');
+	combo_distritos=$('#person_district_id');
 
 	padre_cb_provincias=$(combo_provincias).parent().parent();
 	padre_cb_distritos=$(combo_distritos).parent().parent();
@@ -11,6 +11,8 @@ jQuery ->
 
 	console.log(combo_provincias);
 	console.log(combo_distritos);
+
+	combo_provincias.addClass('form-control');
 
 	combo_provincias.hide();
 	combo_distritos.hide();
@@ -24,7 +26,7 @@ jQuery ->
 	cont_provincias=combo_provincias.html();
 
 	combo_departamentos.change ->
-		dep_seleccionado= $('#user_person_department_id :selected').text()
+		dep_seleccionado= $('#department_id :selected').text()
 		opciones_provincias=$(cont_provincias).filter("optgroup[label='#{dep_seleccionado}']").html()
 		if opciones_provincias
 			combo_provincias.html(opciones_provincias)
@@ -36,7 +38,7 @@ jQuery ->
 
 	cont_distritos=combo_distritos.html()
 	combo_provincias.change ->
-		prov_seleccionada=$('#user_person_province_id :selected').text()
+		prov_seleccionada=$('#province_province_id :selected').text()
 		opciones_distritos=$(cont_distritos).filter("optgroup[label='#{prov_seleccionada}']").html()
 		if(opciones_distritos)
 			combo_distritos.html(opciones_distritos)

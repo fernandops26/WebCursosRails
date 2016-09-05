@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902211009) do
+ActiveRecord::Schema.define(version: 20160904233216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,22 @@ ActiveRecord::Schema.define(version: 20160902211009) do
 
   add_index "districts", ["province_id"], name: "index_districts_on_province_id", using: :btree
 
+  create_table "institutions", force: :cascade do |t|
+    t.string   "razon"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+  end
+
+  create_table "modalities", force: :cascade do |t|
+    t.string   "nombremod"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "people", force: :cascade do |t|
     t.string   "nombres"
     t.string   "ape_pat"
@@ -86,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160902211009) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.string   "dni"
   end
 
   add_index "people", ["district_id"], name: "index_people_on_district_id", using: :btree

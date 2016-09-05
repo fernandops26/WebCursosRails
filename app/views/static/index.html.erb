@@ -46,7 +46,7 @@
 		  	</ul>
 	  	</div>
 	</aside>
-	<div id="fh5co-services-section">
+	<div id="fh5co-services-section" class="animate-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading ">
@@ -54,16 +54,16 @@
 					<p>Tienes disponible un abanico de posibilidades laborales por eso te ofrecemos cursos categorizados estrategicamente para tu conveniencia </p>
 				</div>
 			</div>
-			<div class="row" >
+			<div class="row flex-in-md" >
 				<% @categorias.each do |cat|%>
-				<div class="col-md-4 ">
-					<div class="services" style="">
-						<div style="width:60px;display:inline-block;position:absolute;top:20px">
+				<div class="col-md-4 " >
+					<div class="services" >
+						<div style="width:57px;display:inline-block;position:absolute;top:20px;box-sizing:border-box;">
 						<%= image_tag cat.imagen.url(:mini),class:'img img-thumbnail' %>
 						</div>
 						<div class="desc" style="display:inline-block">
 							<h3><%=cat.nombre%></h3>
-							<p><%=cat.descripcion%></p>
+							<p class="romper-linea"><%=cat.descripcion%></p>
 						</div>
 					</div>
 				</div>
@@ -72,7 +72,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="fh5co-work-section" class="fh5co-light-grey-section">
+	<div id="fh5co-work-section" class="fh5co-light-grey-section animate-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading animate-box">
@@ -87,8 +87,8 @@
 							<div class="panel-heading" style="background-image: url(<%=curso.imagen.url(:thumb)%>)">
 								
 							</div>
-							<div class="panel-body text-center">
-							<img src=<%=asset_path 'book.png'%> class="panel-profile-img" alt="">
+							<div class="panel-body text-center" style="position:relative;">
+														<img src=<%=asset_path 'book.png'%> class="panel-profile-img" alt="">
 							
 								<h5 class="panel-title titulo"><%=curso.titulo%></h5>
 								<p class="m-b"><%=curso.contenido%></p>
@@ -110,7 +110,7 @@
 
 		</div>
 	</div>
-
+	<div id="precios" class="animate-box">
 	<div id="fh5co-pricing-section">
 		<div class="container">
 			<div class="row">
@@ -160,8 +160,9 @@
 			</div>
 		</div>
 	</div>
+	</div>
 
-	<div id="fh5co-testimony-section">
+	<div id="fh5co-testimony-section" class="animate-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading ">
@@ -174,12 +175,14 @@
 					<div class="wrap-testimony well ">
 						<div class="row" style="padding:3em 3em;">
 							<div class="carrosel-afiliados" style="border:1px solid #fff;">
-								<div class="div" style="margin:10px">
-									<div style="">
-										<img src=<%=asset_path 'unmsm.png'%> style="max-width:100%;height:auto;" alt="">
+								<%@instituciones.each do |ins|%>
+									<div class="div" style="margin:10px;">
+										<div style="">
+											<img src=<%=ins.imagen.url(:mini)%> style="max-width:100%;height:auto;margin:auto;" alt="">
+										</div>
+										<h5 class="text-center"><%=ins.razon%></h5>
 									</div>
-									<h5 class="text-center">Universidad Nacional Mayor de San Marcos</h5>
-								</div>
+								<%end%>
 								<div class="div" style="margin:10px;">
 									<div style="">
 										<img src=<%=asset_path 'unt.png'%> style="max-width:100%;height:auto;" alt="">

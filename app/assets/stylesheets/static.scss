@@ -73,3 +73,47 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+.romper-linea{
+    @include multiLineEllipsis($lineHeight: 1.4em, $lineCount: 3, $bgColor: white);
+
+}
+
+.block-with-text {
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3, $bgColor: white);  
+}
+
+.flex-in-md{
+
+    @media screen and (min-width:992px) {
+        display:flex;
+        justify-content:center;
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+}

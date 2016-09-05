@@ -2,6 +2,7 @@ class StaticController < ApplicationController
  def index
  	@cursos=Course.where('estado = ? and fecha >= ?',true,Date.today).order('created_at desc')
  	@categorias=Category.where(destacar:true, estado:true)
+ 	@instituciones=Institution.all
  end
 
  #get

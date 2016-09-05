@@ -516,6 +516,7 @@ h1, h2, h3, h4, h5, h6, figure {
 						text-decoration: none;
 						color: rgba($brand-primary,1);
 						
+
 						&:after {
 							visibility: visible;
 							-webkit-transform: scaleX(1);
@@ -528,6 +529,11 @@ h1, h2, h3, h4, h5, h6, figure {
 					&:active, &:focus {
 						outline: none;
 						text-decoration: none;
+					}
+
+
+					&:hover + ul{
+						display: block;
 					}
 				}
 				&.cta {
@@ -564,6 +570,41 @@ h1, h2, h3, h4, h5, h6, figure {
 						}
 					}
 				}
+				position:relative;
+
+				  > ul.sublista{
+					position: absolute;
+					top:20px;
+					z-index: 2000;
+					background: rgba(#aaa,.05);
+					display: none;
+					border:1px solid #ddd;
+					border-radius: 3px;
+
+					&:hover{
+						display:block;
+					}
+
+					> li{
+						position: relative;
+						display: block;
+						height: auto;
+						margin: 2px;
+						
+						> a{
+							
+							padding:.3em auto;
+							border-radius: 5px;
+							display: block;
+							line-height: 1em;
+
+						}
+
+					}
+				}
+
+
+
 			}
 		}
 	}
@@ -1460,6 +1501,34 @@ h1, h2, h3, h4, h5, h6, figure {
 						}
 					}
 				}
+			}
+
+			&.item-fp{
+
+			}
+			@media screen and (max-width: $screen-sm) {
+
+			ul.sublista{
+				height: 0;
+				transition: opacity .8s;
+				overflow:hidden;
+				opacity: 0;
+
+				&.sublista--activa{
+					height: auto;
+					opacity: 1;
+					box-shadow:4px 0 0 0 $brand-primary inset;
+					padding-left: 10px;
+					box-sizing: border-box;
+					 > li{
+							margin:2px 0;
+						a{
+							display: block;
+						}
+					}
+				}
+				
+			}
 			}
 		}
 	}

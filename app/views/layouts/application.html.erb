@@ -15,7 +15,7 @@
 			<nav role="navigation">
 				<ul>
 					<li><a href="#fh5co-work-section">Servicios</a></li>
-					<li><a href="pricing.html">Precios</a></li>
+					<li><a href="/#precios">Precios</a></li>
 					<li><a href="contacto">Contacto</a></li>
 					<li class="cta"><a href="#">Inicia aquí</a></li>
 				</ul>
@@ -25,11 +25,10 @@
 			<div class="container ">
 				<div class="row">
 					<div class="col-sm-12">
-						<span>Hola, <%=current_user.username%> - </span><%=link_to 'Salir', logout_url%>
+						<span>Hola, <strong> <%=current_user.username%> </strong>- </span><%=link_to 'Salir', logout_url%></br>
 					</div>
 				</div>
 			</div>
-			
 		<%end%>
 	</div>
 </header>

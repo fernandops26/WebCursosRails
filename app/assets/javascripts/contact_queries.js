@@ -85,6 +85,8 @@ $(document).ready(function(){
 	
 			$('.mail-list').on('click','.mail-item',function(){
 			var id=$(this).data('id');
+			$(this).parent().addClass('active');
+			$(this).parent().siblings('.mail-li').removeClass('active');
 			
 			$.get('/management/contact/'+id, {}, (function(data) {
 	        mostrarDetalleMensaje(data);

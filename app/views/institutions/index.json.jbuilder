@@ -1,0 +1,1 @@
+json.array! @intitutions, partial: 'intitutions/intitution', as: :intitution

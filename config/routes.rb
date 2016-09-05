@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :courses
-  resources :categories
+  scope '/management' do
+    resources :modalities, :institutions, :courses, :categories
+  end
+
   resources :users
 
   #rutas de usuario

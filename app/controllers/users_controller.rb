@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
  def new
  	flash[:errores]=nil
- 	@user=User.new
  	@person=Person.new
  	@distritos=District.all
  	@provincias=Province.all
@@ -14,19 +13,16 @@ class UsersController < ApplicationController
  end
 
  def create
-
  	@provincias=Province.all
  	@departamentos=Department.all
- 	@user=User.new(user_params)
- 	@user.type_user=2
- 	if @user.save
- 		log_in_user(@user)
- 		redirect_to home_path
- 	else
- 		flash[:errores]=@user.errors.full_messages
- 		render :new
 
+ 	@person=Person.new(person_params)
+ 	if @person.save
+ 		@person.new
+ 		flash.now[:notice]="La peticion de registro de ha procesado correctamente, el administrador se comunicara contigo"
  	end
+	render :new
+
  end
 
 
@@ -37,6 +33,6 @@ class UsersController < ApplicationController
 	end
 
 	def person_params
-		params.require(:user).permit(person_attributes:[:nombre,:ape_pat,:ape_mat,:f_nacimiento,:district_id,:direccion,:sexo,:email])
+		params.require(:person).permit(:nombre,:ape_pat,:ape_mat,:f_nacimiento,:district_id,:direccion,:sexo,:email,:dni,:profesion,:grado_acad)
 	end
 end

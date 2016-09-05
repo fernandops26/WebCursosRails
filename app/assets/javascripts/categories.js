@@ -22,7 +22,7 @@ $(document).ready(function(){
       params = {
         nombre_cat: cadena
       };
-      $.get('/categories', {
+      $.get('/management/categories', {
         nombre_cat: cadena
       }, (function(data) {
         $('#cuerpo_tabla_categorias').empty();
@@ -59,17 +59,17 @@ $(document).ready(function(){
       celda3.appendChild(document.createTextNode(estado));
       celda4 = document.createElement('td');
       link_a = document.createElement('a');
-      link_a.href = '/categories/' + cat.id;
+      link_a.href = '/management/categories/' + cat.id;
       link_a.innerHTML = 'Ver';
       celda4.appendChild(link_a);
       celda5 = document.createElement('td');
       link_b = document.createElement('a');
-      link_b.href = '/categories/' + cat.id + '/edit';
+      link_b.href = '/management/categories/' + cat.id + '/edit';
       link_b.innerHTML = 'Editar';
       celda5.appendChild(link_b);
       celda6 = document.createElement('td');
       link_c = document.createElement('a');
-      link_c.href = '/categories/' + cat.id;
+      link_c.href = '/management/categories/' + cat.id;
       link_c.dataset.method = 'delete';
       link_c.rel = 'nofollow';
       link_c.innerHTML = 'Eliminar';
@@ -86,7 +86,7 @@ $(document).ready(function(){
     //Extrae data de las categorias existentes e
     //Inicializa selectize con opciones
     var lista = $('#lista_categorias');
-      return $.get('/categories', {
+      return $.get('/management/categories', {
         nombre_cat: ''
       }, (function(data) {
       	var cat_destacadas=limpiarDatosCategorias(data,2);

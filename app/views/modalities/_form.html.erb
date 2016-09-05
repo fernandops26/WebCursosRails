@@ -1,0 +1,23 @@
+<div class="panel ">
+<%= form_for(@modality) do |f| %>
+  <% if @modality.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@modality.errors.count, "error") %> Se produjeron los soguientes errores:</h2>
+
+      <ul>
+      <% @modality.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label 'Nombre' %><br>
+  <div class="form-group">
+    <%= f.text_field :nombremod ,class:'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'Guardar' , class:'btn btn-success'%>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+
+<div class="col-md-4 ">
+
+<h1>Lista de Instituciones</h1>
+  <%= form_tag institutions_path, method: :get,remote:true,'data-type' => :json do %>
+    <div class="form-group">
+      <%= text_field_tag :filtro_institucion, params[:nombre_inst], class: "form-control", placeholder: "Filtrar Institución" %>
+    </div>
+   
+  <% end %>
+<%= link_to 'Nueva Institución', new_institution_path ,class:'btn btn-success'%>
+</div>
+<div class="col-md-8" >
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Razon</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="cuerpo_tabla_instituciones">
+    <% @institutions.each do |institution| %>
+      <tr>
+        <td><%= institution.razon %></td>
+        <td><%= link_to 'Ver', institution %></td>
+        <td><%= link_to 'Editar', edit_institution_path(institution) %></td>
+        <td><%= link_to 'Eliminar', institution, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+</div>
+</div>

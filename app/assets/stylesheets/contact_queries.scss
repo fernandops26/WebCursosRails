@@ -7,6 +7,11 @@ ul.mail-list{
     margin:0;
     list-style:none;
     margin-top:30px;
+    max-height: 40vh;
+    overflow-y: scroll;
+    @media screen and (min-width:1000px) {
+        max-height: 70vh;
+    }
 }
 ul.mail-list li a{
     display:block;
@@ -111,11 +116,15 @@ a:hover, a:focus{
 
 .panel-mensaje-detalle .panel-body{
     font-size: 14px;
-    color: #b7b7b7;
+    color: rgba(#000,.6);
     padding: 0 65px 15px;
     line-height: 20px;
     margin-left: 12px;
     background: #fff;
     border: 1px solid #f3f3f3;
     border-top: none;
+}
+
+.mail-li.active{
+  background:rgba(#000,.1);
 }
