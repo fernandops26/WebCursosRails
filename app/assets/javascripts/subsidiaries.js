@@ -95,6 +95,7 @@ $(document).ready(function(){
 
 	//Muestra el detalle de mensaje y actualiza su estado
 	var mostrarDetalleMensaje=function(data){
+    console.log(data.person);
 		$('#mensaje-detalle_nombres-sub').html(data.person.nombres +" " +data.person.ape_pat +" "+data.person.ape_mat);
 		$('#mensaje-detalle_correo-sub').html(data.person.email);
 		$('#mensaje-detalle_telefono-sub').html(data.person.celular);

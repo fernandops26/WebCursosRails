@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
 	before_action :set_course, only:[:show]
  def index
- 	@cursos=Course.joins(programations:[:institution]).order('created_at desc')
+ 	@cursos=Course.joins(programations:[:institution]).order('created_at desc').limit(6)
  	@categorias=Category.where(destacar:true, estado:true)
  	@instituciones=Institution.all
  end
@@ -31,14 +31,14 @@ class StaticController < ApplicationController
 
  	if(params[:category_id])
       @cursos=Course.where("category_id = ?","#{params[:category_id]}")
-    else
-      @cursos=Course.all
-    end
+  else
+    @cursos=Course.all
+  end
 
  	respond_to do |format|
       format.html {render :courses, status: :ok}
       format.json {render json: @cursos.to_json(:include => :programations)}
-    end
+  end
  end
 
  def search_courses

@@ -1,8 +1,9 @@
 class Person < ActiveRecord::Base
   belongs_to :district
   belongs_to :user
-  has_many :subsidiaries
+  has_many :subsidiaries ,dependent: :destroy
   has_many :programations, :through => :subsidiaries
+  
   accepts_nested_attributes_for :subsidiaries
 
   validates :nombres, presence: {message:"- No puede estar vacio"},length:{minimum:3 , message:"- Minimo 3 caracteres" }
