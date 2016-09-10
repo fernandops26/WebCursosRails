@@ -14,14 +14,17 @@
 //= requieren jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap-switch
 //= require user.coffee
 //= require selectize
 //= require jquery.slick
 //= require moment
 //= require moment/es.js
+//= require nested_form_fields
+//= require tinymce
+//= require tinymce-jquery
 //= require_tree
 
 
 $('#user_person_province_id').hide();
 $('#user_person_district_id').hide();
-		

@@ -1,0 +1,124 @@
+$(document).ready(function(){
+$('.carrosel-afiliados').slick({
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 1000,
+  speed: 300,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1424,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: true
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+
+  /*$('.lista-categorias-cliente').on('click',function(){
+    $(this).addClass('active');
+    $(this).css('color', '#fff');;
+    $(this).siblings('.lista-categorias-cliente').removeClass('active');
+    var id=$(this).attr('id');
+    var nombre=$(this).html();
+    $('#nombreCategoriaCursos').html(nombre);
+   /* $.get('/search_curso', {
+        category_id: id
+      }, (function(data) {
+        
+        $('#lista-cursos-cliente').empty();
+        filtrarCursosCliente(data);
+      }), 'json');
+
+   });*/
+
+});
+
+ //Recorre cada item de la data
+   /* var filtrarCursosCliente = function(data) {
+      if(data.length>0){
+        $('#sin_resultados_cursos').hide();
+        for (var i = data.length -1; i >= 0 ; i--) {
+          console.log(data[i]);
+          crearEstructuraObjCurso(data[i]);
+        }
+      }else{
+        $('#sin_resultados_cursos').show();
+      }
+      
+    };
+
+var crearEstructuraObjCurso=function(curso){
+  var lista_cursos=$('#lista-cursos-cliente');
+  var div1,div2,div3,div4,div5,div6,h4,p,a,img;
+  div1=document.createElement('div');
+    div1.className="card card-de-lista";
+  div2=document.createElement('div');
+    div2.className="card-block card-flex";
+  div3=document.createElement('div');
+    div3.className="card-flex-left";
+  div4=document.createElement('div');
+    div4.className="card-flex-rigth";
+  div5=document.createElement('div');//vacio
+  div5.className="div-normal";
+  h4=document.createElement('h4');
+    h4.className="card-title";
+    h4.innerHTML=curso.titulo;
+  div6=document.createElement('div');//vacio
+  div6.className="div-normal";
+  a=document.createElement('a');
+    a.href="curso/"+curso.id;
+    a.className="card-link card-link-bottom";
+    a.innerHTML="Ver detalles";
+  img=document.createElement('img')
+    $(img).attr({
+      src: "<%= asset_path('"+curso.imagen_file_name+"') %>"
+    }) 
+
+  console.log(curso.imagen_file_name);
+
+  div5.appendChild(h4);
+  div3.appendChild(div5);
+  div6.appendChild(a);
+  div3.appendChild(div6);
+
+  div4.appendChild(img)
+
+  div2.appendChild(div3);
+  div2.appendChild(div4);
+
+  div1.appendChild(div2);
+
+  lista_cursos.append($(div1));
+
+
+
+
+}*/

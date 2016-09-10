@@ -117,3 +117,58 @@
         flex-wrap:wrap;
     }
 }
+
+.card{
+      position: relative;
+    display: block;
+    margin-bottom: .75rem;
+    background-color: #fff;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125); 
+}
+.card-block{
+  padding: 1.25rem;
+}
+
+.list-group-item-action:hover{
+  background:rgba(#27E1CE,.3);
+
+}
+
+.card-de-lista{
+  max-width: 200rem;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.card-flex{
+  display:flex;
+  flex-wrap:wrap;
+  .card-flex-left{
+    flex-grow: 1;
+    width:calc(100% - 100px);
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+
+    
+  }
+
+  .card-flex-rigth{
+    width:100px;
+
+  }
+
+  .card-link-bottom{
+    margin-top:auto;
+  }
+
+  .card-flex-imagen{
+    max-width:100%;
+    height:auto;
+  }
+
+  .div-normal{
+    display:block;
+    width:100%;
+  }
+}

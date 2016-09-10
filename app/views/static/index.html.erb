@@ -1,13 +1,7 @@
 
 	
 	<div class="container">
-			<%unless current_user%>
-				<div class="row">
-					<div class="col-sm-12">
-						<span><%= link_to 'Inicia sesión' , login_url%></span>
-					</div>
-				</div>
-				<%end%>
+			
 	</div>
 	<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
@@ -81,18 +75,23 @@
 				</div>
 			</div>
 			<div class="row">
-			<%@cursos.each do |curso|%>
+			<%@cursos.uniq.each do |curso|%>
 					<div class="col-md-4 ">
 						<div class="panel panel-default panel-profile m-b-0">
 							<div class="panel-heading" style="background-image: url(<%=curso.imagen.url(:thumb)%>)">
 								
 							</div>
 							<div class="panel-body text-center" style="position:relative;">
-														<img src=<%=asset_path 'book.png'%> class="panel-profile-img" alt="">
+														
 							
 								<h5 class="panel-title titulo"><%=curso.titulo%></h5>
-								<p class="m-b"><%=curso.contenido%></p>
-								<a href="#" class="btn btn-info btn-primary-outline btn-sm m-b">
+								<%if curso.programations.size>0%>
+									<p>En <%=curso.programations.size%> Instituciones</p>
+								<%elsif%>
+									<h6>Pronto disponible</h6>
+								<%end%>
+								<p class="m-b"></p>
+								<a href="/curso/<%=curso.id%>" class="btn btn-info btn-primary-outline btn-sm m-b">
 									<span class="icon icon-add-user"></span>
 									Ver curso
 								</a>
@@ -103,7 +102,8 @@
 			<%end%>
 
 			<div class="col-md-12 text-center ">
-					<p><a href="#" class="btn btn-primary with-arrow">Ver todos!<i class="icon-arrow-right"></i></a></p>
+					<p><%= link_to "Ver todos !", cursos_url,{class:'btn btn-primary with-arrow'} %>
+					</p>
 				</div>
 
 			</div>
@@ -183,37 +183,7 @@
 										<h5 class="text-center"><%=ins.razon%></h5>
 									</div>
 								<%end%>
-								<div class="div" style="margin:10px;">
-									<div style="">
-										<img src=<%=asset_path 'unt.png'%> style="max-width:100%;height:auto;" alt="">
-									</div>
-										
-									<h5 class="text-center">Universidad Nacional de Trujillo</h5>
-								</div>
-								<div class="div" style="margin:10px;">
-									<div style="">
-										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
-									</div>
-									<h5 class="text-center"> Aqui el nombre de la institución</h5>
-								</div>
-								<div class="div" style="margin:10px";>
-									<div style="">
-										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
-									</div>
-									<h5 class="text-center"> Aqui el nombre de la institución</h5>
-								</div>
-								<div class="div" style="margin:10px">
-									<div style="">
-										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
-									</div>
-									<h5 class="text-center"> Aqui el nombre de la institución</h5>
-								</div>
-								<div class="div" style="margin:10px">
-									<div style="">
-										<img src=<%=asset_path 'sin-imagen.png'%> style="max-width:100%;height:auto;" alt="">
-									</div>
-									<h5 class="text-center"> Aqui el nombre de la institución</h5>
-								</div>
+									
 						</div>
 						
 					</div>

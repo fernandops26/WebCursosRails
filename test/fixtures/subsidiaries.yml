@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 
+  programation_id: 
+  estado: MyString
+
+two:
+  person_id: 
+  programation_id: 
+  estado: MyString

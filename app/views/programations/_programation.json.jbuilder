@@ -1,0 +1,2 @@
+json.extract! programation, :id, :descripcion, :objetivos, :duracion, :horas, :costo, :plan, :Institution_id, :Course_id, :created_at, :updated_at
+json.url programation_url(programation, format: :json)

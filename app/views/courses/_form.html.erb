@@ -11,32 +11,123 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+  <div class="col-sm-4">
+    <%= f.label :titulo %>
+    <div class="form-group">
+      <%= f.text_field :titulo,class:'form-control'  %>
+    </div>
+      <%= f.label 'Categoria' %>
+    <div class="form-group">
+      <%= f.select :category_id , options_from_collection_for_select(@categorias, "id", "nombre",:selected =>f.object.category_id),{},{class:'form-control'}%>
+    </div>
+     
+    <div class="form-group">
+      <%= f.label :imagen%>
+      <%= f.file_field :imagen %>
+    </div>
+  </div>
+    
+  
+  <div class="col-sm-8">
+  <!--INICIO ACCORDEON -->
+  <div class="panel-group" id="accordeonCursos">
+    <%= f.nested_fields_for :programations do |pro|%>
+    <div class="panel panel-primary">
+      <div class="panel-heading ">
+        <h3 class="panel-title panel-curso" data-target="#panel-1" data-toggle="collapse" data-parent="#accordeonCursos">Programar Curso</h3>
 
-  <%= f.label :titulo %>
-  <div class="form-group">
-    <%= f.text_field :titulo, class:'form-control' %>
+      </div>
+      <div class="panel-collapse collapse panel-curso" id="panel-1">
+        <div class="panel-body">
+        <span class="pull-right clickable" data-effect="fadeOut"><%= pro.remove_nested_fields_link 'Eliminar Programación', data: { confirm: 'Estas seguro?', role:'button' }%></span>
+             <%= pro.label 'Institución' %>
+            <div class="form-group">
+              <%= pro.select :institution_id , options_from_collection_for_select(@instituciones, "id", "razon",:selected =>pro.object.institution_id ),{},{class:'form-control'}%>
+            </div>
+
+            <div class="form-group">
+              <%= pro.label :descripcion %><br>
+              <%= pro.text_area :descripcion ,class:'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= pro.label :objetivos %><br>
+              <%= pro.text_area :objetivos ,class:'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= pro.label :duracion %><br>
+              
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= pro.number_field :duracion ,{class:'form-control',placeholder:'Meses'}%>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                  <%= pro.number_field :horas,{class:'form-control',placeholder:'Horas'}%>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <%= pro.label :costo %><br>
+              <%= pro.text_field :costo ,class:'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= pro.label 'Plan de estudio'%><br>
+              <%= pro.text_area :plan ,{ :class => "tinymce", rows: 5, cols: 120 }%>
+            </div>
+             <%= pro.label :fecha %>
+            <div class="form-group">
+              <%=pro.date_select(:fecha, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: Date.today.year, end_year: Date.today.year+5 ,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto'})%>
+            </div>
+              <%= pro.label :estado %><br>
+            <div class="form-group">
+              <%= pro.check_box :estado ,{:data => { :'on-text' => 'Activo',:'off-text' => 'Inactivo' },class:'check-switch'}%>
+            </div>
+            <%= pro.label 'Modalidad' %><br>
+            <div class="form-group">
+               <%= pro.collection_check_boxes :modality_ids, @modalidades, :id, :nombremod,:include_hidden => false do |b| %>
+                  <%= b.label class:"label-checkbox" do%>
+                     <%=b.check_box + b.text%>
+                    <%end%></br>
+                <%end%>
+            </div>
+
+
+        </div>
+      </div>
+
+       <%end%>
+
+    </div>
+  </div></br>
+
+
+
+    
+   
+ 
+<!--  -->
+
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <%=f.add_nested_fields_link :programations, 'Programar con otra institución'%>
+    </div>
   </div>
-  <%= f.label :contenido %><br>
-  <div class="form-group">
-    <%= f.text_area :contenido,{ class:'form-control',rows:4} %>
+
+ 
+
   </div>
-    <%= f.label 'Categoria' %>
-  <div class="form-group">
-    <%= f.select :category_id , options_from_collection_for_select(@categorias, "id", "nombre"),{},{class:'form-control'}%>
+    
   </div>
-    <%= f.label :fecha %>
-  <div class="form-group">
-    <%= f.date_select :fecha %>
-  </div>
-    <%= f.label :estado %><br>
-  <div class="form-group">
-    <%= f.check_box :estado %>
-  </div>
-  <div class="form-group">
-    <%= f.label :imagen%>
-    <%= f.file_field :imagen %>
-  </div>
-  <div class="form-group">
-    <%= f.submit 'Guardar', {class:'btn btn-success'} %>
-  </div>
+  <div class="row">
+      <div class="col-sm-12">
+         <div class="form-group">
+        <%= f.submit 'Guardar', {class:'btn btn-success'} %>
+      </div>
+      </div>
+    </div>
 <% end %>

@@ -1,0 +1,157 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12  ">
+    	<div class="row">
+    		<div class="col-md-5 col-lg-4">
+    			<h5 class="text-left" style="font-weight:bolder" >Categorias disponibles</h5>
+				<ul class="list-group list-group-flush">
+					<% if !@categorias.blank? %>
+						<% for item in @categorias %>
+							<li class="list-group-item list-group-item-action lista-categorias-cliente text-primary" id=<%=item.id%> style="cursor:pointer">
+							<%=link_to item.nombre, cursos_url(:category_id=>item.id)%>
+        					</li>
+						<% end %>
+					<% else %>
+						
+					<% end %>
+            	</ul>
+    		</div>
+    		<div class="col-md-7 col-lg-8">
+	    		<div class="card card-outline-primary" style="outline:blue !important;">
+	    			<div class="card-block">
+	    			<div class="row">
+		    			<div class="col-sm-12">
+		    				<div class="col-sm-6">
+								    <h4 class="card-title "><strong><%=@course.titulo%></strong></h4>
+								  <h5 class="card-subtitle text-muted"> <%=@course.category.nombre%> </h5>
+		    				</div>
+		    				<div class="col-sm-6">
+		    					<%= image_tag @course.imagen.url(:mini),class:'card-img-top img-thumbnail'%>
+		    				</div>
+		    				</div>
+		    				</div>
+		    			</div>
+		    			<div class="card-block">
+		    				<blockquote class="blockquote">
+								  <p class="m-b-0 text-muted" style="border-bottom:solid 1px ;">
+								   	Tienes disponibles diversas instituciones y modalidades de estudio para seleccionar
+								  </p>
+								</blockquote>
+		    			</div>
+		    			<div class="card-block">
+		    					
+		    					<div id="accordion" role="tablist" aria-multiselectable="true" >
+		    					<%@course.programations.each_with_index do |pro,index|%>
+									  <div class="panel panel-primary">
+									    <div class="panel-heading " style="background:#0275d8" role="tab" id="headingOne" >
+									      <h4 class="panel-title " style="color:#fff">
+									        <a data-toggle="collapse" data-parent="#accordion" href="#tab-<%=index%>"
+									           aria-expanded="true" aria-controls="collapseOne" class="text-primary">
+									         <%=pro.institution.razon%>
+									        <%if pro.estado==true%>
+									       		<label class="label label-success pull-right">Disponible</label>
+									       		<%else%>
+									       		<label class="label label-warning pull-right">Pronto</label>
+									       	<%end%>
+									        </a>
+									      </h4>
+									    </div>
+									    <div id="tab-<%=index%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <div class="panel-body">
+									      	<%if pro.estado==true%>
+									       		<p class="pull-right text-right"><label>Fecha de inicio:</label> <%= pro.fecha.strftime("%d-%m-%Y") %></p>
+													<%else%>
+														<p class="pull-right text-right"><label>Sin definir fecha</label> </p>
+									       <%end%>
+									      	
+									      	<div class="form-group" class="m-b">
+			                      <label class="control-label">Descripción</label>
+			                      <div class="col-sm-12">
+			                          <p class="form-control-static"><%= pro.descripcion %></p>
+			                      </div>
+		                    	</div>
+		                    	<div class="form-group">
+			                      <label class="control-label">Objetivos</label>
+			                      <div class="col-sm-12">
+			                          <p class="form-control-static"><%= pro.objetivos %></p>
+			                      </div>
+			                    </div>
+													<div class="row">
+														<div class="col-sm-6">
+														<label class="control-label">Duración</label>
+															<table class="table">
+															  <thead>
+															    <tr>
+															      <th>Meses</th>
+															      <th>Horas</th>
+															    </tr>
+															  </thead>
+															  <tbody>
+															    <tr>
+															      <td><%=pro.duracion%></td>
+															      <td><%=pro.horas%></td>
+															    </tr>
+															  </tbody>
+															</table>
+														</div>
+													</div>
+			                    
+			                    
+
+
+			                    <div class="form-group">
+			                      <label class="control-label">Plan de Estudio</label>
+			                      <div class="col-sm-12">
+			                          <%= raw(pro.plan) %>
+			                      </div>
+			                    </div>
+
+			                    <div class="form-group m-b">
+			                      <label class="control-label">Modalidades disponibles</label>
+			                      <%pro.modalities.each do |mod|%>
+			                        <div class="col-sm-12">
+			                          -  <%= mod.nombremod %>
+			                        </div>
+			                     
+			                      <%end%>
+			                    </div>
+
+			                    <div class="form-group pull-right">
+			                      <label class="control-label">Inversión</label>
+			                      <div class="col-sm-12">
+			                          <p class="form-control-static">S/.<%= pro.costo %></p>
+			                      </div>
+			                    	
+			                    </div>
+			                    
+									      </div>
+									      <%if pro.estado==true%>
+									      <div class="row">
+									      	<div class="col-sm-12">
+									      		<div class="form-group">
+			                    		<%=link_to 'Tomar el curso' ,signup_path(:prog=>pro.id),{class:'btn btn-success',style:'margin-left:1em'}%>
+			                    </div>
+									      	</div>
+									      </div>
+									      <%end%>
+									    </div>
+									  </div>
+
+									  <%end%>
+									</div>
+
+
+		    			</div>
+	    			</div>
+	    		
+
+				</div>
+
+
+    		</div>
+    	</div>
+
+
+    </div>
+    </div>
+    </div>

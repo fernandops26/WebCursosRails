@@ -2,7 +2,7 @@
 <%= form_for(@institution) do |f| %>
   <% if @institution.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@institution.errors.count, "error") %> Se produjeron los soguientes errores:</h2>
+      <h2><%= pluralize(@institution.errors.count, "error") %> Se produjeron los siguientes errores:</h2>
 
       <ul>
       <% @institution.errors.full_messages.each do |message| %>

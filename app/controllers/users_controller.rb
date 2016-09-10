@@ -10,6 +10,16 @@ class UsersController < ApplicationController
  	@distritos=District.all
  	@provincias=Province.all
  	@departamentos=Department.all
+ 	@person.subsidiaries.build
+
+ 	if params[:prog]
+ 		if Programation.exists?(params[:prog])
+ 			@programacion_actual=Programation.find(params[:prog])
+ 		
+ 		end
+ 		
+ 	end
+
  end
 
  def create
@@ -18,8 +28,9 @@ class UsersController < ApplicationController
 
  	@person=Person.new(person_params)
  	if @person.save
- 		@person.new
- 		flash.now[:notice]="La peticion de registro de ha procesado correctamente, el administrador se comunicara contigo"
+ 		@person=Person.new
+ 		@person.subsidiaries.build
+ 		flash.now[:notice]="La petición de registro de ha procesado correctamente, nos comunicaremos contigo en la brevedad posible."
  	end
 	render :new
 
@@ -28,11 +39,7 @@ class UsersController < ApplicationController
 
 
  private
-	def user_params
-		params.require(:user).permit(:username,:password,:password_confirmation)
-	end
-
 	def person_params
-		params.require(:person).permit(:nombre,:ape_pat,:ape_mat,:f_nacimiento,:district_id,:direccion,:sexo,:email,:dni,:profesion,:grado_acad)
+		params.require(:person).permit(:nombres,:ape_pat,:ape_mat,:f_nacimiento,:district_id,:direccion,:sexo,:email,:celular,:dni,:profesion,:grado_acad, subsidiaries_attributes:[:programation_id])
 	end
 end

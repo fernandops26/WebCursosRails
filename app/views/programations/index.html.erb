@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Programations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descripcion</th>
+      <th>Objetivos</th>
+      <th>Duracion</th>
+      <th>Horas</th>
+      <th>Costo</th>
+      <th>Plan</th>
+      <th>Institution</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programations.each do |programation| %>
+      <tr>
+        <td><%= programation.descripcion %></td>
+        <td><%= programation.objetivos %></td>
+        <td><%= programation.duracion %></td>
+        <td><%= programation.horas %></td>
+        <td><%= programation.costo %></td>
+        <td><%= programation.plan %></td>
+        <td><%= programation.institution %></td>
+        <td><%= programation.course %></td>
+        <td><%= link_to 'Show', programation %></td>
+        <td><%= link_to 'Edit', edit_programation_path(programation) %></td>
+        <td><%= link_to 'Destroy', programation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Programation', new_programation_path %>

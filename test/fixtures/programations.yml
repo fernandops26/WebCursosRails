@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descripcion: MyText
+  objetivos: MyText
+  duracion: 1
+  horas: 1
+  costo: 1.5
+  plan: MyText
+  Institution_id: 
+  Course_id: 
+
+two:
+  descripcion: MyText
+  objetivos: MyText
+  duracion: 1
+  horas: 1
+  costo: 1.5
+  plan: MyText
+  Institution_id: 
+  Course_id: 

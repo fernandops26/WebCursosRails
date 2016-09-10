@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul.mail-list{
+ul.mail-list, ul.mail-list-sub{
     padding:0;
     margin:0;
     list-style:none;
@@ -13,46 +13,46 @@ ul.mail-list{
         max-height: 70vh;
     }
 }
-ul.mail-list li a{
+ul.mail-list li a, ul.mail-list-sub li a{
     display:block;
     border-bottom:1px dotted #CFCFCF;
     padding:10px;
     text-decoration:none;
     position:relative;
 }
-ul.mail-list li a .label-nuevo{
+ul.mail-list li a .label-nuevo,ul.mail-list-sub li a .label-nuevo{
     background:tomato;
     display:inline;
     position:absolute;
     top:5px;
     
 }
-ul.mail-list li:last-child a{
+ul.mail-list li:last-child a, ul.mail-list-sub li:last-child a{
     border-bottom:none;
 }
-ul.mail-list li a:hover{
+ul.mail-list li a:hover, ul.mail-list-sub li a:hover{
     background-color:#DBF9FF;
 }
-ul.mail-list li span{
+ul.mail-list li span, ul.mail-list-sub li span{
     display:block;
 }
-ul.mail-list li span.mail-sender{
+ul.mail-list li span.mail-sender, ul.mail-list-sub li span.mail-sender-sub{
     font-weight:600;
     color:#8F8F8F;
 }
-ul.mail-list li span.mail-subject{
+ul.mail-list li span.mail-subject, ul.mail-list-sub li span.mail-subject-sub{
     color:#8C8C8C;
     font-size:13px
 }
-ul.mail-list li span.mail-message-preview{
+ul.mail-list li span.mail-message-preview, ul.mail-list-sub li span.mail-message-preview-sub{
     display:block;
     color:#A8A8A8;
 }
-.mail-search{
+.mail-search, .mail-search-sub{
     border-bottom-color:#7FBCC9!important; 
 }
 
-.panel-mensaje-detalle{
+.panel-mensaje-detalle, .panel-mensaje-detalle-sub{
 	background-color:#f8f8f8;
 }
 
@@ -62,16 +62,16 @@ a:hover, a:focus{
     text-decoration: none;
     outline: none;
 }
-.panel-mensaje-detalle .panel{
+.panel-mensaje-detalle .panel, .panel-mensaje-detalle-sub .panel{
     border: none;
     background: none;
     border-radius: 0;
     box-shadow: none;
 }
-.panel-mensaje-detalle .panel-heading{
+.panel-mensaje-detalle .panel-heading, .panel-mensaje-detalle-sub .panel-heading{
     padding: 0;
 }
-.panel-mensaje-detalle .panel-title a{
+.panel-mensaje-detalle .panel-title a, .panel-mensaje-detalle-sub .panel-title a{
     display: block;
     font-size: 16px;
     color: rgba(#000,.7);
@@ -83,7 +83,7 @@ a:hover, a:focus{
     transition: all 0.5s ease 0s;
 }
 
-.panel-mensaje-detalle .panel-title a:after{
+.panel-mensaje-detalle .panel-title a:after, .panel-mensaje-detalle-sub .panel-title a:after{
     content: "\2709";
     font-family: 'Glyphicons Halflings';
     font-size: 15px;
@@ -98,14 +98,14 @@ a:hover, a:focus{
     background: #27e1ce;
     transition: all .2s;
 }
-.panel-mensaje-detalle .panel-title a.collapsed:after{
+.panel-mensaje-detalle .panel-title a.collapsed:after, .panel-mensaje-detalle-sub .panel-title a.collapsed:after{
     content: "\f067";
     color: #959595;
     background: #27e1ce;
     transition: all 0.5s ease 0s;
 }
 
-.panel-mensaje-detalle .panel-title a:before{
+.panel-mensaje-detalle .panel-title a:before,.panel-mensaje-detalle-sub .panel-title a:before {
     content: "";
     position: absolute;
     bottom: -11px;
@@ -114,7 +114,7 @@ a:hover, a:focus{
     border-right: 12px solid #27e1ce;
 }
 
-.panel-mensaje-detalle .panel-body{
+.panel-mensaje-detalle .panel-body,.panel-mensaje-detalle-sub .panel-body{
     font-size: 14px;
     color: rgba(#000,.6);
     padding: 0 65px 15px;
@@ -125,6 +125,6 @@ a:hover, a:focus{
     border-top: none;
 }
 
-.mail-li.active{
+.mail-li.active, .mail-li-sub.active{
   background:rgba(#000,.1);
 }

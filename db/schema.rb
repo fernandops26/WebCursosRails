@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904233216) do
+ActiveRecord::Schema.define(version: 20160908204316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,7 @@ ActiveRecord::Schema.define(version: 20160904233216) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "titulo"
-    t.text     "contenido"
     t.integer  "category_id"
-    t.date     "fecha"
-    t.boolean  "estado"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "imagen_file_name"
@@ -87,6 +84,14 @@ ActiveRecord::Schema.define(version: 20160904233216) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "modalities_programations", id: false, force: :cascade do |t|
+    t.integer "modality_id"
+    t.integer "programation_id"
+  end
+
+  add_index "modalities_programations", ["modality_id"], name: "index_modalities_programations_on_modality_id", using: :btree
+  add_index "modalities_programations", ["programation_id"], name: "index_modalities_programations_on_programation_id", using: :btree
+
   create_table "people", force: :cascade do |t|
     t.string   "nombres"
     t.string   "ape_pat"
@@ -107,6 +112,24 @@ ActiveRecord::Schema.define(version: 20160904233216) do
 
   add_index "people", ["district_id"], name: "index_people_on_district_id", using: :btree
 
+  create_table "programations", force: :cascade do |t|
+    t.text     "descripcion"
+    t.text     "objetivos"
+    t.integer  "duracion"
+    t.integer  "horas"
+    t.decimal  "costo",          precision: 8, scale: 2
+    t.text     "plan"
+    t.integer  "institution_id"
+    t.integer  "course_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "estado"
+    t.date     "fecha"
+  end
+
+  add_index "programations", ["course_id"], name: "index_programations_on_course_id", using: :btree
+  add_index "programations", ["institution_id"], name: "index_programations_on_institution_id", using: :btree
+
   create_table "provinces", force: :cascade do |t|
     t.string   "nombreprov"
     t.integer  "department_id"
@@ -115,6 +138,18 @@ ActiveRecord::Schema.define(version: 20160904233216) do
   end
 
   add_index "provinces", ["department_id"], name: "index_provinces_on_department_id", using: :btree
+
+  create_table "subsidiaries", force: :cascade do |t|
+    t.integer  "person_id"
+    t.integer  "programation_id"
+    t.boolean  "estado"
+    t.boolean  "leido"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "subsidiaries", ["person_id"], name: "index_subsidiaries_on_person_id", using: :btree
+  add_index "subsidiaries", ["programation_id"], name: "index_subsidiaries_on_programation_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -127,5 +162,9 @@ ActiveRecord::Schema.define(version: 20160904233216) do
   add_foreign_key "courses", "categories"
   add_foreign_key "districts", "provinces"
   add_foreign_key "people", "districts"
+  add_foreign_key "programations", "courses"
+  add_foreign_key "programations", "institutions"
   add_foreign_key "provinces", "departments"
+  add_foreign_key "subsidiaries", "people"
+  add_foreign_key "subsidiaries", "programations"
 end

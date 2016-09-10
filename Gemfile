@@ -28,6 +28,13 @@ gem "jquery-slick-rails"
 
 gem 'momentjs-rails'
 
+gem 'nested_form_fields'
+
+gem 'tinymce-rails'
+
+gem "bootstrap-switch-rails"
+
+gem 'tinymce-rails-langs'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -58,6 +65,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 

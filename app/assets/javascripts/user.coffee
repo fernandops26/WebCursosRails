@@ -32,6 +32,7 @@ jQuery ->
 			combo_provincias.html(opciones_provincias)
 		else
 			combo_provincias.empty();
+		combo_provincias.change();
 		combo_provincias.show();
 		padre_cb_provincias.show();
 

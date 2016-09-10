@@ -1,8 +1,11 @@
 'use strict'
 $(document).ready(function(){
-	console.log($("#mail-list"));
+
+
+  $('#panel-mensaje-detalle').hide();
+
+
 	$('#filtro_mensajes_nombres').keyup(function(e) {
-		console.log("escrito");
       clearTimeout($.data(this, 'timer'));
       if (e.keyCode === 13) {
         searchMnsjs(true);
@@ -91,6 +94,8 @@ $(document).ready(function(){
 			$.get('/management/contact/'+id, {}, (function(data) {
 	        mostrarDetalleMensaje(data);
 	      }), 'json');
+
+      $('#panel-mensaje-detalle').show('400');
 		});
 
 	//Muestra el detalle de mensaje y actualiza su estado
@@ -101,7 +106,6 @@ $(document).ready(function(){
 		$('#mensaje-detalle_mensaje').html(data.mensaje);
 
 			if(data.leido==false){
-				console.log("Este mensaje no ha sido leido");
 				$.post('/management/contact/update_leido', {id: data.id,leido:true}, (function(data) {
 			
 					$.get('/management/contact', {filtro_nombres:''}, (function(data) {

@@ -1,0 +1,139 @@
+<div class="fh5co-contact animate-box" style="padding-top:0">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-12">
+			<h3>Peticiones de registro</h3>
+		</div>
+		
+		<div class="col-md-4">
+                   
+                   <input type="search" placeholder="Buscar por nombres" class="form-control mail-search-sub" id="filtro_mensajes_nombres-sub"/>
+                   
+                   <ul class="mail-list-sub" id="mail-list-sub">
+                   
+                   <% @consultas.each do |query|%>
+                       <li class="mail-li-sub">
+                           <a href="#" class="mail-item-sub" data-id=<%=query.id%>>
+                           			<%if query.leido==false %>
+	                           		<span class="label label-nuevo" >		nuevo
+	                           		</span>
+	                           		<%end%>
+	                           		 <span class="mail-subject-sub text-right" ><%=query.created_at.strftime("%d/%m/%Y - %I:%M:%S %p")%>
+	                           		 </span>
+	                               <span class="mail-sender-sub"><%=query.person.nombres%> <%=query.person.ape_mat%> <%=query.person.ape_pat%>
+	                               </span>
+	                               <span class="mail-message-preview-sub"><%=query.person.email%>
+	                               </span>
+                           </a>
+                       </li>
+                    <%end%>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+               	
+									<div class="panel-group panel-mensaje-detalle" id="panel-mensaje-detalle-sub">
+		                <div class="panel panel-default">
+		                    <div class="panel-heading" >
+		                        <h4 class="panel-title">
+		                            <a id="mensaje-detalle_nombres-sub" >
+		                                Jorge Fernando Palacios Sánchez
+		                            </a>
+		                        </h4>
+		                    </div>
+		                    <div>
+		                        <div class="panel-body">
+		                        		<h5 id="mensaje-detalle_correo-sub">f.499@hotmail.com </h5>
+
+		                        		<h6>celular. <span id="mensaje-detalle_telefono-sub">945636806</span></h6>
+		                        		<div class="row">
+		                        			<div class="col-sm-12">
+		                        				<div class="card">
+		                        					<div class="card-block">
+		                        						<label>Datos de la persona</label>
+
+		                        						<div class="row">
+		                        							<input type="hidden" id="detalle-registro-id"/>
+		                        							<input type="hidden" id="detalle-registro-leido"/>
+
+		                        							<div class="col-sm-12">
+		                        								<strong class="str-sub">Fecha de nacimiento: </strong><span class="spn-sub" id="detalle-registro-fecha-n">23-03-2015</span>
+		                        							</div>
+		                        							<div class="col-sm-6">
+			                        							<strong class="str-sub">Dni: </strong><span class="spn-sub" id="detalle-registro-dni">74088259</span>
+			                        						</div>
+			                        						<div class="col-sm-6">
+			                        							<strong class="str-sub">celular: </strong><span class="spn-sub" id="detalle-registro-celular">945636806</span>
+		                        							</div>
+
+		                        							<div class="col-sm-12">
+		                        								<strong class="str-sub">Género: </strong><span class="spn-sub" id="detalle-registro-genero">Masculino</span>
+		                        							</div>
+		                        							<div class="col-sm-12">
+		                        								<strong class="str-sub">Ubicación: </strong><span class="spn-sub" id="detalle-registro-ubicacion">Piura/Paita/Paita</span>
+		                        							</div>
+		                        							<div class="col-sm-12">
+		                        								<strong class="str-sub">Dirección: </strong><span class="spn-sub" id="detalle-registro-direccion">Jr: argentina #202 y algo mas!</span>
+		                        							</div>
+		                        							<div class="col-sm-12">
+		                        								<strong class="str-sub">Profesión: </strong><span class="spn-sub" id="detalle-registro-profesion">Soy estudiante</span>
+		                        							</div>
+		                        							<div class="col-sm-12">
+		                        								<strong class="str-sub">Grado Académico: </strong><span class="spn-sub" id="detalle-registro-grado">Universitario</span>
+		                        							</div>
+		                        						</div>
+
+		                        					</div>
+		                        				</div>
+		                        				
+		                        			</div>
+		                        			<div class="col-sm-12">
+		                        				<div class="card">
+		                        					<div class="card-block">
+		                        						<label>Jorge Fernando</label> <label>  desea:</label>
+
+		                        						<div class="row">
+		                        							
+
+		                        							<div class="col-sm-12">
+		                        								<strong class="str-sub">Curso: </strong><span class="spn-sub" id="detalle-registro-curso">Este es el nombre del curso un poco mas grande</span>
+		                        							</div>
+		                        							<div class="col-sm-12">
+			                        							<strong class="str-sub">Dictado por: </strong><span class="spn-sub" id="detalle-registro-institucion">Universidad fictiai que tiene el nombre un poco grande</span>
+			                        						</div>
+			                        						<div class="col-sm-12">
+			                        							<strong class="str-sub">Costo: S/.</strong><span class="spn-sub" id="detalle-registro-costo">1300.0</span>
+		                        							</div>
+		                        						</div>
+
+		                        					</div>
+		                        				</div>
+		                        			</div>
+		                        			<div class="col-sm-12">
+		                        				<div class="card">
+		                        					<div class="card-block">
+		                        						<label>Acciones: </label>
+
+		                        						<div class="row">
+		                        							<div class="col-sm-12">
+		                        								<a href="#" class="btn btn-warning" id="detalle-registro-btn-leido">Marcar como leído</a>
+
+		                        							</div>
+		                        							
+		                        						</div>
+
+		                        					</div>
+		                        				</div>
+		                        			</div>
+
+		                        			</div>
+		                        		</div>
+										<p id="mensaje-detalle_mensaje-sub"></p>
+		                        </div>
+		                    </div>
+		                </div>
+		                </div>
+               </div>
+
+		</div>
+	</div>
+</div>

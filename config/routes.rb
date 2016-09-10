@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
+  get 'subsidiaries/index'
+
+  resources :programations
   scope '/management' do
     resources :modalities, :institutions, :courses, :categories
   end
@@ -28,9 +35,12 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'static#index'
-
    get 'contacto', to:'static#contact'
    post 'contacto', to:'static#create_query_contact'
+   get 'cursos', to:'static#courses'
+   get 'curso/:id', to: 'static#show' ,as: 'curso'
+
+   get 'search_curso', to: 'static#search_courses'
 
    post 'categories/update_destacar', to: 'categories#update_destacar'
 
@@ -39,6 +49,16 @@ Rails.application.routes.draw do
    get 'management/contact/:id', to:'contact_queries#show'
 
    post 'management/contact/update_leido', to: 'contact_queries#update_leido'
+
+
+   get 'management/subsidiaries', to:'subsidiaries#index'
+
+   get 'management/subsidiaries/:id', to:'subsidiaries#show'
+
+   post 'management/subsidiaries/update_leido', to: 'subsidiaries#update_leido'
+
+     match "/404", :to => "errors#not_found", :via => :all
+   match "/500", :to => "errors#internal_server_error", :via => :all
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

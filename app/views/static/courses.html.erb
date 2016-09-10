@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12  ">
+    	<div class="row">
+    		<div class="col-md-5 col-lg-4">
+    			<h5 class="text-left" style="font-weight:bolder" >Categorias disponibles</h5>
+				<ul class="list-group list-group-flush">
+					<% if !@categorias.blank? %>
+						<% for item in @categorias %>
+							<li class="list-group-item list-group-item-action lista-categorias-cliente" id=<%=item.id%> style="cursor:pointer">
+								<%=link_to item.nombre, cursos_url(:category_id=>item.id)%>
+        					</li>
+						<% end %>
+					<% else %>
+						
+					<% end %>
+            	</ul>
+    		</div>
+    		<div class="col-md-7 col-lg-8">
+	    		<div class="row">
+	    			<div class="col-xs-12 orm" ><h4 id="nombreCategoriaCursos" class="text-right" style="font-weight:bold;font-size:17px;color:rgba(0, 0, 0, 0.6)">Categoria</h4></div>
+	    		</div>
+    			<%= form_tag categories_path, method: :get,remote:true,'data-type' => :json do %>
+			        <div class="form-group">
+			          <%= text_field_tag :filtro_cursos_cliente, params[:nombre_cur], class: "form-control", placeholder: "Buscar un curso" %>
+			        </div>
+			    <% end %>
+			    <div class="lista-cursos-cliente" id="lista-cursos-cliente">
+			    	<div class="card card-de-lista " >
+			    		
+							<%@cursos.each do |c|%>
+						<div class="card-block card-flex" style="border-bottom:1px solid #ddd;">
+							<div class="card-flex-left" >
+								<div class="div-normal" >
+									
+									<h4 class="card-title" ><%=c.titulo%></h4>
+								</div>
+								<div class="div-normal" >
+									<%= link_to 'Ver detalles', curso_url(c.id)%>
+								</div>
+							</div>
+							
+							<div class="card-flex-rigth" ">
+								<%= image_tag c.imagen.url(:mini),class:'img.-rounded card-flex-imagen'%>
+							</div>
+							
+							<!-- Links -->
+						</div>
+						<%end%>
+
+						</div>
+						
+			    </div>
+			    <% if @cursos.size==0 %>
+			    <div class="sin-resultados text-center well"  id="sin_resultados_cursos">
+							<p class="text-center" style="color:#27e1ce;">No se ha encontrado disponible ningun curso</p>
+						</div>
+					<%end%>
+
+    		</div>
+    	</div>
+
+
+    </div>
+    </div>
+    </div>

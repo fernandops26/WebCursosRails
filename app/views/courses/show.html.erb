@@ -6,7 +6,7 @@
       <h3>Información de Curso</h3>
         <form class="form well">
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-7">
 
             <div class="form-group">
               <label class=" control-label">Titulo</label>
@@ -14,44 +14,116 @@
                   <p class="form-control-static"><%= @course.titulo %></p>
               </div>
             </div>
-            <div class="form-group">
-              <label class="control-label">Contenido</label>
-              <div class="col-sm-12">
-                  <p class="form-control-static"><%=  @course.contenido %></p>
-              </div>
-            </div>
-
+            
             <div class="form-group">
               <label class="control-label">Categoria</label>
               <div class="col-sm-12">
                   <p class="form-control-static"><%=  @course.category.nombre %></p>
               </div>
             </div>
-            <div class="form-group">
-              <label class="control-label">Fecha. Inicio</label>
-              <div class="col-sm-12">
-                  <p class="form-control-static"><%= @course.fecha %></p>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label">Estado</label>
-              <div class="col-sm-12">
-                  <p class="form-control-static">
-                  <% if @course.estado==true %>
-                    Activo
-                  <%elsif%>
-                    Inactivo
-                  <%end%>
-                  </p>
-              </div>
-            </div>
+
 
             </div>
-          <div class="col-xs-6">
+          <div class="col-xs-5">
               <div class="form-group">
                 <label class="control-label">Imagen</label>
                 <%= image_tag @course.imagen.url(:thumb) ,class:'img-thumbnail'%>
               </div>
+          </div>
+          <div class="col-sm-10 col-md-offset-1">
+            <div class="panel-group" id="accordeonCursos">
+              <%@course.programations.sort.each_with_index do |pro,index|%>
+
+              
+                <div class="panel panel-info">
+                  <div class="panel-heading ">
+                    <h3 class="panel-title" data-target="#panel-<%=index%>" data-toggle="collapse" data-parent="#accordeonCursos"><%=pro.institution.razon%> <% if pro.estado==true %>
+                          <span class="pull-right text-top label label-primary">Activo</span>
+                        <%elsif%>
+                          <span class="pull-right text-top label label-danger">Inactivo</span>
+                        <%end%></span>
+
+
+                        </h3>
+
+
+                  </div>
+                  <div class="panel-collapse collapse " id="panel-<%=index%>">
+                    <div class="panel-body">
+                    <div class="form-group">
+                      <label class="control-label">Descripción</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.descripcion %></p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label">Objetivos</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.objetivos %></p>
+                      </div>
+                    </div>
+                     <div class="form-group">
+                      <label class="control-label">Meses</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.duracion %></p>
+                      </div>
+                    </div>
+                     <div class="form-group">
+                      <label class="control-label">Horas</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.horas %></p>
+                      </div>
+                    </div>
+                     <div class="form-group">
+                      <label class="control-label">Costo</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.costo %></p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Plan de Estudio</label>
+                      <div class="col-sm-12">
+                          <%= raw(pro.plan) %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Fecha de inicio</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.fecha %></p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Modalidades disponibles</label>
+                      <%pro.modalities.each do |mod|%>
+                        <div class="col-sm-12">
+                          -  <%= mod.nombremod %>
+                        </div>
+                     
+                      <%end%>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="control-label">Estado</label>
+                      <div class="col-sm-12">
+                      <p class="form-control-static">
+                        <% if pro.estado==true %>
+                          Activo
+                        <%elsif%>
+                          Inactivo
+                        <%end%>
+                      </p>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              </div>
+              <%end%>
+
+            </div>
+            
           </div>
         </div>
 

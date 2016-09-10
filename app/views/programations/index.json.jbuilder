@@ -1,0 +1,1 @@
+json.array! @programations, partial: 'programations/programation', as: :programation

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @programation.descripcion %>
+</p>
+
+<p>
+  <strong>Objetivos:</strong>
+  <%= @programation.objetivos %>
+</p>
+
+<p>
+  <strong>Duracion:</strong>
+  <%= @programation.duracion %>
+</p>
+
+<p>
+  <strong>Horas:</strong>
+  <%= @programation.horas %>
+</p>
+
+<p>
+  <strong>Costo:</strong>
+  <%= @programation.costo %>
+</p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @programation.plan %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @programation.institution %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @programation.course %>
+</p>
+
+<%= link_to 'Edit', edit_programation_path(@programation) %> |
+<%= link_to 'Back', programations_path %>
