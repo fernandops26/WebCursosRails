@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombres: MyString
+  apellidos: MyString
+  curriculum: MyString
+  visto: false
+  estado: false
+
+two:
+  nombres: MyString
+  apellidos: MyString
+  curriculum: MyString
+  visto: false
+  estado: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908204316) do
+ActiveRecord::Schema.define(version: 20160915075320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20160908204316) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "coordinators", force: :cascade do |t|
+    t.string   "nombres"
+    t.string   "apellidos"
+    t.string   "curriculum"
+    t.boolean  "visto"
+    t.boolean  "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string   "titulo"
     t.integer  "category_id"
@@ -49,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160908204316) do
     t.string   "imagen_content_type"
     t.integer  "imagen_file_size"
     t.datetime "imagen_updated_at"
+    t.integer  "tipo"
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
@@ -108,6 +119,7 @@ ActiveRecord::Schema.define(version: 20160908204316) do
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.string   "dni"
+    t.string   "celular_op"
   end
 
   add_index "people", ["district_id"], name: "index_people_on_district_id", using: :btree
@@ -117,14 +129,16 @@ ActiveRecord::Schema.define(version: 20160908204316) do
     t.text     "objetivos"
     t.integer  "duracion"
     t.integer  "horas"
-    t.decimal  "costo",          precision: 8, scale: 2
     t.text     "plan"
     t.integer  "institution_id"
     t.integer  "course_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.boolean  "estado"
     t.date     "fecha"
+    t.decimal  "costo_matricula",     precision: 8, scale: 2
+    t.decimal  "costo_mensualidad",   precision: 8, scale: 2
+    t.decimal  "costo_certificacion", precision: 8, scale: 2
   end
 
   add_index "programations", ["course_id"], name: "index_programations_on_course_id", using: :btree

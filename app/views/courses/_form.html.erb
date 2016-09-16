@@ -17,6 +17,13 @@
     <div class="form-group">
       <%= f.text_field :titulo,class:'form-control'  %>
     </div>
+
+    <%= f.label :tipo %>
+  <div class="form-group">
+    
+  <%= f.select(:tipo, [['Diplomado', 1], ['Maestría', 2],['Doctorado', 3]],{},{class:'form-control'}) %>
+  </div>
+
       <%= f.label 'Categoria' %>
     <div class="form-group">
       <%= f.select :category_id , options_from_collection_for_select(@categorias, "id", "nombre",:selected =>f.object.category_id),{},{class:'form-control'}%>
@@ -24,7 +31,7 @@
      
     <div class="form-group">
       <%= f.label :imagen%>
-      <%= f.file_field :imagen %>
+      <%= f.file_field :imagen ,{class:'form-control'}%>
     </div>
   </div>
     
@@ -70,8 +77,16 @@
             </div>
             
             <div class="form-group">
-              <%= pro.label :costo %><br>
-              <%= pro.text_field :costo ,class:'form-control'%>
+              <%= pro.label 'costo matricula' %><br>
+              <%= pro.text_field :costo_matricula ,class:'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= pro.label 'costo mensualidad' %><br>
+              <%= pro.text_field :costo_mensualidad ,class:'form-control'%>
+            </div>
+            <div class="form-group">
+              <%= pro.label 'costo certificacion' %><br>
+              <%= pro.text_field :costo_certificacion ,class:'form-control'%>
             </div>
             <div class="form-group">
               <%= pro.label 'Plan de estudio'%><br>

@@ -23,6 +23,8 @@
 //= require nested_form_fields
 //= require tinymce
 //= require tinymce-jquery
+//= require parsley
+//= require parsley.i18n.es
 //= require_tree
 
 

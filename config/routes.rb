@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'errors/not_found'
 
   get 'errors/internal_server_error'
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :programations
   scope '/management' do
-    resources :modalities, :institutions, :courses, :categories
+    resources :modalities, :institutions, :courses, :categories,:coordinators,:users
   end
 
   resources :users
@@ -15,15 +16,17 @@ Rails.application.routes.draw do
   #rutas de usuario
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
-  get 'signup', to: 'users#new'
-  post 'signup', to: 'users#create'
+  get 'signup', to: 'static#new'
+  post 'signup', to: 'static#create'
   get 'home', to: 'users#index'
-  get 'logout', to: 'user_sessions#destroy'
+  delete 'logout', to: 'user_sessions#destroy'
 
   #rutas de admin
   get 'admin/login', to:'admin_sessions#new'
   post 'admin/login', to: 'admin_sessions#create'
   get 'admin/home', to: 'admins#index'
+  get 'admin/profile', to: 'admins#profile'
+  patch 'admin/profile', to:'admins#update_profile'
   get 'admin/logout', to: 'admin_sessions#destroy'
 
 
@@ -40,7 +43,15 @@ Rails.application.routes.draw do
    get 'cursos', to:'static#courses'
    get 'curso/:id', to: 'static#show' ,as: 'curso'
 
+   get 'aplicar', to: 'static#aplicar'
+
+   post 'aplicar', to: 'static#add_aplicator'
+
+   get 'coordinadores', to: 'static#coordinators'
+
    get 'search_curso', to: 'static#search_courses'
+
+   get 'verificar', to: 'static#verify'
 
    post 'categories/update_destacar', to: 'categories#update_destacar'
 
@@ -56,6 +67,10 @@ Rails.application.routes.draw do
    get 'management/subsidiaries/:id', to:'subsidiaries#show'
 
    post 'management/subsidiaries/update_leido', to: 'subsidiaries#update_leido'
+
+   post 'management/subsidiaries/update_estado', to: 'subsidiaries#update_estado'
+
+   post 'management/subsidiaries/update_credential', to: 'subsidiaries#update_credential'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -172,3 +172,38 @@
     width:100%;
   }
 }
+
+.m-b-md{
+  margin-bottom:2em;
+}
+
+.m-b-lg{
+  margin-bottom:3em;
+}
+
+.row-personalizado{
+  background:#fff;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:.1em 0;
+  border-radius:3px;
+  @media screen and (max-width:720px) {
+    padding:.2em 0;
+  }
+}
+
+.input-sin-outline{
+  border:none !important;
+  outline:none !important;
+  &:hover{
+    border:none !important;
+    outline:none !important;
+  }
+}
+
+.m-b-hasta-sm{
+  @media screen and (max-width:720px) {
+    margin-bottom:.4em;
+  }
+}

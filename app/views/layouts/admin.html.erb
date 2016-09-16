@@ -11,18 +11,20 @@
 <header id="fh5co-header" role="banner">
 	<div class="container">
 		<div class="header-inner">
-			<h1><a href="index.html">Pronacades</a></h1>
+			<h1><a href="/">Proncades</a></h1>
 			<nav role="navigation" >
 				<ul>
 					<li><%= link_to 'Categorias',categories_path%></li>
 					<li><%= link_to 'Cursos',courses_path%></li>
-					<li><%= link_to 'Intituciones',institutions_path%></li>
-					<!--<li><a href="pricing.html">Perfil</a></li>-->
+					<li><%= link_to 'Usuarios',users_path%></li>
 					<li><%= link_to 'Contacto', management_contact_url%></li>
 					<li><%= link_to 'Registros', management_subsidiaries_url%></li>
 					<li><a href="#" class="item-fp">Config.</a>
 						<ul class="sublista">
 							<li><%= link_to 'Modalidades',modalities_path%></li>
+							<li><%= link_to 'Coordinadores',coordinators_path%></li>
+							<li><%= link_to 'Contraseña',admin_profile_path%></li>
+							<li><%= link_to 'Intituciones',institutions_path%></li>
 						</ul>
 					</li>
 					<li class="cta"><%=link_to 'Salir', admin_logout_url%></li>

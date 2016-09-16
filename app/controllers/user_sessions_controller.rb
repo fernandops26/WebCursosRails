@@ -5,7 +5,6 @@ class UserSessionsController < ApplicationController
  end
 
  def create
- 	puts params[:session_user].inspect
  	user=User.find_by(username: params[:session_user][:username])
  	if user && user.authenticated?(params[:session_user][:password]) && (user.type_user==2)
  		log_in_user(user)
@@ -24,7 +23,6 @@ class UserSessionsController < ApplicationController
  def destroy
  	log_out_user if logged_in_user?
  	redirect_to login_path
-
  end 
 
 end

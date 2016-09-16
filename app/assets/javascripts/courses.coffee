@@ -102,7 +102,18 @@ $(document).ready ->
     celda2 = document.createElement('td')
     celda2.appendChild document.createTextNode(cur.category.nombre)
     celda3 = document.createElement('td')
-    celda3.appendChild document.createTextNode(cur.programations.length)
+
+
+    tipo = undefined
+    switch cur.tipo
+      when 1
+        tipo = 'Diplomado'
+      when 2
+        tipo = 'Maestría'
+      else
+        tipo = 'Doctorado'
+
+    celda3.appendChild document.createTextNode(tipo)
     celda4 = document.createElement('td')
     link_a = document.createElement('a')
     link_a.href = '/management/courses/' + cur.id

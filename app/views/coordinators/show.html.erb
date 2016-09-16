@@ -1,0 +1,57 @@
+<div class="fh5co-contact ">
+<div class="container ">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <p id="notice"><%= notice %></p>
+        <h3>Información de Coordinador</h3>
+        <form class="form well">
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+              <label class=" control-label">Nombres</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%= @coordinator.nombres %></p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class=" control-label">Apellidos</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%= @coordinator.apellidos %></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class=" control-label">Curriculum</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%= link_to 'Ver', @coordinator.curriculum_url ,{:target=>"_blank"}%></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class=" control-label">Visto</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static"><%=@coordinator.visto%></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class=" control-label">Estado</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static">
+                    <%if @coordinator.estado==true%>
+                    Activo
+                    <%else%>
+                    Inactivo
+                    <%end%>
+                  </p>
+              </div>
+            </div>
+          </div>
+
+<%= link_to 'Editar', edit_coordinator_path(@coordinator) %> |
+<%= link_to 'Regresar', coordinators_path %>
+
+    </form>
+    </div>
+  </div>
+</div>
+</div>

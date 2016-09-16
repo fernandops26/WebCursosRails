@@ -1,45 +1,76 @@
 class UsersController < ApplicationController
- before_action :authenticate_user, only:[:index]
+ layout 'admin'
+  before_action :set_user, only: [:show,:edit, :update, :destroy]
 
- def index
- end
+  # GET /users
+  # GET /users.json
+  def index
+    @users = User.joins("LEFT OUTER JOIN people ON users.id=people.user_id").where('type_user=?',2)
+  end
 
- def new
- 	flash[:errores]=nil
- 	@person=Person.new
- 	@distritos=District.all
- 	@provincias=Province.all
- 	@departamentos=Department.all
- 	@person.subsidiaries.build
+  # GET /users/1
+  # GET /users/1.json
+  def show
+  end
 
- 	if params[:prog]
- 		if Programation.exists?(params[:prog])
- 			@programacion_actual=Programation.find(params[:prog])
- 		
- 		end
- 		
- 	end
+  # GET /users/new
+  def new
+    @user = User.new
+  end
 
- end
+  # GET /users/1/edit
+  def edit
+  end
 
- def create
- 	@provincias=Province.all
- 	@departamentos=Department.all
+  # POST /users
+  # POST /users.json
+  def create
+    @user = User.new(users_params)
+    @user.type_user=2;
 
- 	@person=Person.new(person_params)
- 	if @person.save
- 		@person=Person.new
- 		@person.subsidiaries.build
- 		flash.now[:notice]="La petición de registro de ha procesado correctamente, nos comunicaremos contigo en la brevedad posible."
- 	end
-	render :new
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'Usuario creado correctamente.' }
+        format.json { render show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
- end
+  # PATCH/PUT /users/1
+  # PATCH/PUT /users/1.json
+  def update
+    respond_to do |format|
+      if @user.update(users_params)
+        format.html { redirect_to @user, notice: 'Usuario actualizado correctamente.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
+  # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'Usuario eliminado correctamente.' }
+      format.json { head :no_content }
+    end
+  end
 
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
 
- private
-	def person_params
-		params.require(:person).permit(:nombres,:ape_pat,:ape_mat,:f_nacimiento,:district_id,:direccion,:sexo,:email,:celular,:dni,:profesion,:grado_acad, subsidiaries_attributes:[:programation_id])
-	end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def users_params
+      params.require(:user).permit(:username,:password,:password_digest)
+    end
 end

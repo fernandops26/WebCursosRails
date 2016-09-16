@@ -1,12 +1,16 @@
 class User < ActiveRecord::Base
 	
 
-	validates :username, presence: true, uniqueness: true, length:{minimum:8}
+	validates :username, presence: true, uniqueness: true
 	validates :password, presence: true, length: {in: 6..12}
 	has_secure_password
 
 	has_one :person, dependent: :destroy
 	accepts_nested_attributes_for :person
+
+	before_update :encryptar
+
+	before_create :encryptar_una_pass
 
 
 	#atributo virtual
@@ -37,5 +41,18 @@ class User < ActiveRecord::Base
 
 	def delete_cookie
 		#update_attribute(:password_digest,nil)
+	end
+
+	def iguales?(password,password_digest)
+		password.equal?(password_digest)
+	end
+	def encryptar
+		cost=BCrypt::Engine.cost
+		self.password_digest =BCrypt::Password.create(self.password,cost:cost)
+	end
+
+	def encryptar_una_pass
+		cost=BCrypt::Engine.cost
+		self.password_digest =BCrypt::Password.create(self.password_digest,cost:cost)
 	end
 end

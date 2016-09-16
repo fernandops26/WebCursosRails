@@ -1,3 +1,6 @@
+<%content_for :title do %>
+ <title><%=@course.titulo%> - Cursos Proncades</title>
+<%end%>
 <div class="container">
   <div class="row">
     <div class="col-md-12  ">
@@ -8,7 +11,7 @@
 					<% if !@categorias.blank? %>
 						<% for item in @categorias %>
 							<li class="list-group-item list-group-item-action lista-categorias-cliente text-primary" id=<%=item.id%> style="cursor:pointer">
-							<%=link_to item.nombre, cursos_url(:category_id=>item.id)%>
+							<%=link_to item.nombre, cursos_url(:category_id=>item.id,:t=>@tipo_curso)%>
         					</li>
 						<% end %>
 					<% else %>
@@ -116,12 +119,26 @@
 			                      <%end%>
 			                    </div>
 
+			                    
 			                    <div class="form-group pull-right">
-			                      <label class="control-label">Inversión</label>
+			                      <label class="control-label">Certificación</label>
 			                      <div class="col-sm-12">
-			                          <p class="form-control-static">S/.<%= pro.costo %></p>
+			                          <p class="form-control-static">S/.<%= pro.costo_certificacion %></p>
 			                      </div>
-			                    	
+			                    </div>
+			                    
+
+			                    <div class="form-group pull-right">
+			                      <label class="control-label">Mensualidad</label>
+			                      <div class="col-sm-12">
+			                          <p class="form-control-static">S/.<%= pro.costo_mensualidad %></p>
+			                      </div>
+			                    </div>
+			                    <div class="form-group pull-right">
+			                      <label class="control-label">Matricula</label>
+			                      <div class="col-sm-12">
+			                          <p class="form-control-static">S/.<%= pro.costo_matricula %></p>
+			                      </div>
 			                    </div>
 			                    
 									      </div>

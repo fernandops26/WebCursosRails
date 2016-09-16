@@ -1,0 +1,66 @@
+<%content_for :title do %>
+ <title>Trabaja con nosotros - Proncades</title>
+<%end%>
+	
+<div class="fh5co-contact animate-box" style="padding-top:0">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 col-md-push-2 animate-box">
+					<%if  notice%>
+						<div class="alert alert-success fade in ">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong id="notice"><%= notice %></strong>
+						</div>
+					<%end%>
+					
+
+					<% if flash[:error] %>
+				    <div id="error_explanation" class="alert alert-danger">
+				      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				      <h4><strong>La operación no se ha realizado debido a:</strong></h4>
+
+				      <ul>
+				      <li>flash[:error]</li>
+				      </ul>
+				    </div>
+				  <% end %>
+					<h2>Trabaja con nosotros</h2>
+					<p>Somos una identidad que nos identifica y nos apasiona lo que hacemos, Proncades necesita personas como tú, con talento y retos propios. </p><br><br>
+
+				</div>
+				<div class="col-md-3">
+					<h3>¡Queremos contar contigo!</h3>
+					<p>Te ofrecemos un equipo ganador y un gran lugar de trabajo. ¡Únete a nosotros, puedes ser el próximo coordinador! Solo dejanos tu CV! </p>
+					
+				</div>
+				<div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				 <%= form_for(@coordinator,url:'aplicar',html: { multipart: true }) do |f| %>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+							<%=f.text_field :nombres, {placeholder:'Nombres',class:'form-control'}%>
+								
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group">
+							 <%= f.text_field :apellidos,{placeholder:'Apellidos',class:'form-control'}%>
+							</div>
+						</div>
+						<div class=" col-sm-8">
+							<div class="form-group">
+							<%= f.file_field :curriculum, {class:'form-control'}%>
+							</div>
+						</div>
+
+						<div class="col-sm-12">
+							<div class="form-group">
+							<%=f.submit 'Aplicar' , {class:'btn btn-info'}%>
+							</div>
+						</div>
+					</div>
+					<%end%>
+				</div>
+			</div>
+		</div>	
+	</div>

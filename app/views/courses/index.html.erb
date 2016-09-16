@@ -36,7 +36,7 @@
     <tr>
       <th>Titulo</th>
       <th>Categoria</th>
-      <th>Instituciones</th>
+      <th>Tipo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -46,7 +46,15 @@
       <tr>
         <td><%= course.titulo %></td>
         <td><%= course.category.nombre %></td>
-        <td><%= course.programations.count %></td>
+        <td><%if course.tipo==1 %>
+          Diplomado
+        <%elsif course.tipo==2%>
+          Maestría
+        <%else%>
+          Doctorado
+        <%end%>
+          
+        </td>
         
         <!--<td>
         <%= image_tag course.imagen.url(:thumb) %></td>-->

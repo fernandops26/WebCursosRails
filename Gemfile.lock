@@ -48,6 +48,10 @@ GEM
     bootstrap-switch-rails (3.3.3)
     builder (3.2.2)
     byebug (9.0.5)
+    carrierwave (1.0.0.beta)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -138,6 +142,8 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    parsley-rails (2.0.7.0)
+      railties (>= 3.0.0)
     pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.4)
@@ -232,6 +238,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-switch-rails
   byebug
+  carrierwave (>= 1.0.0.beta)
   coffee-rails (~> 4.1.0)
   guard-livereload (~> 2.5)
   jbuilder (~> 2.0)
@@ -241,6 +248,7 @@ DEPENDENCIES
   momentjs-rails
   nested_form_fields
   paperclip (~> 5.0.0)
+  parsley-rails
   pg
   rails (= 4.2.6)
   rails_12factor

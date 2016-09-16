@@ -1,7 +1,56 @@
-<h1>ESte es el home del usuario autenticado</h1>
+<div class="container">
+  <div class="row">
+   <div class="col-md-4">
+    <p id="notice"><%= notice %></p>
+    <h1>Lista de usuarios</h1>
+    <%= link_to 'Nuevo usuario', new_user_path ,{class:'btn btn-success'}%>
+    </div>
+    <div class="col-md-8">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Dni</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @users.each do |u| %>
+          <tr>
+            <td><%=u.username%></td>
+            <td><%if u.person%>
+            <%= u.person.nombres %>
+            <%else%>
+            No asginado
+            <%end%>
+              
+            </td>
+            <td><%if u.person%>
+            <%= u.person.ape_pat %> <%= u.person.ape_mat %>
+               <%else%>
+            No asginado
+            <%end%>
+            </td>
+            <td>
+            <%if u.person%>
+            <%= u.person.dni %>
+              <%else%>
+              No asginado
+              <%end%>
+            </td>
+            <td><%= link_to 'Ver', u %></td>
+            <td><%= link_to 'Editar', edit_user_path(u) %></td>
+            <td><%= link_to 'Eliminar', u, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
+    <br>
 
-<h2>Bienvenido <%=@current_user.username%></h2>
-<%= link_to "Cerrar session",logout_path, method: :delete %>
-
+    </div>
+  </div>
+</div>

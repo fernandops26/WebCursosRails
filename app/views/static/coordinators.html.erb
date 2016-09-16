@@ -1,0 +1,35 @@
+<%content_for :title do %>
+ <title>Coordinadores - Proncades</title>
+<%end%>
+<div class="container" style="margin-top:1em;">
+	<div class="row">
+		<div class="col-sm-12">
+		
+
+			<%if @coordinadores.size > 0 %>
+
+
+			<h3 class="m-b">Nuestros coordinadores</h3>
+
+			<div class="list-group">
+			  <a href="#" class="list-group-item disabled">
+			    Nombres completos
+			  </a>
+			  <% @coordinadores.each do |coordinator| %>
+	            <a href="#" class="list-group-item" style="color:#0275d8;">
+	              <%= coordinator.nombres %>
+	              <%= coordinator.apellidos %>
+	            </a>
+	          <% end %>
+			</div>
+
+			<%else%>
+				<h3>Estamos agregando los coordinadores </h3>
+
+			<%end%>
+
+			
+			
+		</div>
+	</div>
+</div>

@@ -14,6 +14,20 @@
                   <p class="form-control-static"><%= @course.titulo %></p>
               </div>
             </div>
+            <div class="form-group">
+              <label class=" control-label">Tipo</label>
+              <div class="col-sm-12">
+                  <p class="form-control-static">
+                  <%if @course.tipo==1 %>
+                    Diplomado
+                  <%elsif @course.tipo==2%>
+                    Maestría
+                  <%else%>
+                    Doctorado
+                  <%end%>
+                  </p>
+              </div>
+            </div>
             
             <div class="form-group">
               <label class="control-label">Categoria</label>
@@ -76,9 +90,21 @@
                       </div>
                     </div>
                      <div class="form-group">
-                      <label class="control-label">Costo</label>
+                      <label class="control-label">Costo Matricula</label>
                       <div class="col-sm-12">
-                          <p class="form-control-static"><%= pro.costo %></p>
+                          <p class="form-control-static"><%= pro.costo_matricula %></p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Costo Mensualidad</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.costo_mensualidad %></p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Costo Certificación</label>
+                      <div class="col-sm-12">
+                          <p class="form-control-static"><%= pro.costo_certificacion %></p>
                       </div>
                     </div>
                     <div class="form-group">

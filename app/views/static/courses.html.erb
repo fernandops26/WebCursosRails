@@ -1,3 +1,7 @@
+<%content_for :title do %>
+ <title>Cursos - Proncades</title>
+<%end%>
+
 <div class="container">
   <div class="row">
     <div class="col-md-12  ">
@@ -8,7 +12,7 @@
 					<% if !@categorias.blank? %>
 						<% for item in @categorias %>
 							<li class="list-group-item list-group-item-action lista-categorias-cliente" id=<%=item.id%> style="cursor:pointer">
-								<%=link_to item.nombre, cursos_url(:category_id=>item.id)%>
+								<%=link_to item.nombre, cursos_url(:category_id=>item.id,:t=>@tipo_curso)%>
         					</li>
 						<% end %>
 					<% else %>
@@ -18,13 +22,18 @@
     		</div>
     		<div class="col-md-7 col-lg-8">
 	    		<div class="row">
-	    			<div class="col-xs-12 orm" ><h4 id="nombreCategoriaCursos" class="text-right" style="font-weight:bold;font-size:17px;color:rgba(0, 0, 0, 0.6)">Categoria</h4></div>
+	    			<div class="col-xs-12 orm" ><h4 id="nombreCategoriaCursos" class="text-right" style="font-weight:bold;font-size:17px;color:rgba(0, 0, 0, 0.6)">
+	    			<%if @tipo_curso=='1'%>
+	    				Diplomado
+	    			<%elsif @tipo_curso=='2'%>
+	    				Maestría
+	    			<%else%>
+	    				Doctorado
+	    			<%end%>
+
+	    			</h4></div>
 	    		</div>
-    			<%= form_tag categories_path, method: :get,remote:true,'data-type' => :json do %>
-			        <div class="form-group">
-			          <%= text_field_tag :filtro_cursos_cliente, params[:nombre_cur], class: "form-control", placeholder: "Buscar un curso" %>
-			        </div>
-			    <% end %>
+    			
 			    <div class="lista-cursos-cliente" id="lista-cursos-cliente">
 			    	<div class="card card-de-lista " >
 			    		
@@ -36,7 +45,7 @@
 									<h4 class="card-title" ><%=c.titulo%></h4>
 								</div>
 								<div class="div-normal" >
-									<%= link_to 'Ver detalles', curso_url(c.id)%>
+									<%= link_to 'Ver detalles', curso_url(c.id,:t=>@tipo_curso)%>
 								</div>
 							</div>
 							

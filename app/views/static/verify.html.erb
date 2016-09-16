@@ -1,0 +1,87 @@
+<div class="div" style="background-color:#ddd;height:calc(100vh - 100px)">
+	<div class="container" style="background-color:#fff">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3><strong>Resultados de consulta</strong></h3>
+				<%if @consulta%>
+					<div class="card">
+					<div class="card-block" style="border-bottom:solid 1px #666;">
+						<h3 class="card-title"><strong><%=@consulta.person.nombres%></strong></h3>
+						<h4 class="card-subtitle text-muted"><%=@consulta.person.ape_pat%> <%= @consulta.person.ape_mat%></h4>
+					</div>
+					<div class="card-block">
+						<h4 class="card-subtitle">Matriculas actuales:</h4>
+						<% if @consulta.person.subsidiaries.select{|a| a.estado==true && a.programation.estado==true}.count >0%>
+							<%@consulta.person.subsidiaries.each do |item|%>
+									<%if item.estado==true && item.programation.estado==true%>
+										<table class="table table-hover">
+											<thead>
+												<tr>
+									            <th>Nombre</th>
+									            <th>Institución</th>
+									            <th>Inicio</th>
+									          </tr>
+											</thead>
+										<tbody>
+											<tr>
+									            <th><%=item.programation.course.titulo%></th>
+									            <th><%=item.programation.institution.razon%></th>
+									            <th><%=item.programation.fecha%></th>
+									          </tr>
+										</tbody>
+									</table>
+								<%end%>
+							<%end%>
+						<%else%>
+							<p class="text-muted">No existe ninguna informacion</p>
+						<%end%>
+						</div>
+						<div class="card-block">
+
+						<%if @consulta.person.subsidiaries.select{|a| a.estado==false && a.programation.estado==true}.count >0%>
+
+							
+							<h4 class="card-text">Matriculas Pendientes de pago:</h4>
+							<%@consulta.person.subsidiaries.each do |item|%>
+
+								<%if item.estado==false && item.programation.estado==true%>
+									<table class="table table-hover">
+										<thead>
+											<tr>
+								            <th>Nombre</th>
+								            <th>Institución</th>
+								            <th>Inicio</th>
+								          </tr>
+										</thead>
+										<tbody>
+											<tr>
+									            <th><%=item.programation.course.titulo%></th>
+									            <th><%=item.programation.institution.razon%></th>
+									            <th><%=item.programation.fecha%></th>
+									          </tr>
+										</tbody>
+									</table>
+								<%end%>
+							<%end%>
+
+						<%else%>
+						<p class="text-muted">No existe ninguna información </p>
+						<%end%>
+						<%=link_to 'Hacer otra consulta', '/#verify-section'%>
+					</div>
+				</div>
+				<%else%>
+				<div class="card">
+					<div class="card-block">
+					<h4 class="card-title"><strong style="color:#666"">El usuario no esta matriculado</strong> </h4>
+					<%=link_to 'Hacer otra consulta', '/#verify-section'%>
+					</div>
+					</div>
+				<%end%>
+
+		</div>
+	</div>
+</div>
+
+
+</div>

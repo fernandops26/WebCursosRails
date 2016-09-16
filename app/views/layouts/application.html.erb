@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WebCursos</title>
+  <%= yield :title || "Proncades" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,12 +11,25 @@
 <header id="fh5co-header" role="banner">
 	<div class="container">
 		<div class="header-inner">
-			<h1><%= link_to 'Pronacades',root_path%></h1>
+			<h1><%= link_to 'Proncades',root_path%></h1>
 			<nav role="navigation">
 				<ul>
-					<li><a href="/#fh5co-work-section">Cursos</a></li>
+					<li><a href="#" class="item-fp">Servicios</a>
+						<ul class="sublista">
+							<li><a href="/cursos?t=1">Especialidades</a></li>
+							<li><a href="/cursos?t=1">Diplomados</a></li>
+							<li><a href="/cursos?t=2">Maestrias</a></li>
+							<li><a href="/cursos?t=3">Doctorados</a></li>
+						</ul>
+					</li>
 					<li><a href="/#precios">Precios</a></li>
 					<li><a href="contacto">Contacto</a></li>
+					<li><a href="#" class="item-fp">Nosotros</a>
+						<ul class="sublista">
+							<li><%= link_to 'Coordinadores',coordinadores_url%></li>
+							<li><%= link_to 'Envia tu CV',aplicar_url%></li>
+						</ul>
+					</li>
 					<li class="cta"><%= link_to 'Inicia Aquí' , login_url%></li>
 				</ul>
 			</nav>

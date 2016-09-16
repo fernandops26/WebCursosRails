@@ -1,4 +1,6 @@
-
+<%content_for :title do %>
+ <title>Proncades</title>
+<%end%>
 	
 	<div class="container">
 			
@@ -40,6 +42,26 @@
 		  	</ul>
 	  	</div>
 	</aside>
+	<div id="verify-section" style="background:brown;" class="animate-box">
+		<div class="container text-center" >
+		<div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2" style="padding:3em 0;">
+			<h1 style="font-weight:bold;color:#fff;" class="m-b">VERIFICA TU MATRICULA</h1>
+			<h4 style="color:#fff;" class="m-b-lg">Ingresa tu nombre de usuario</h4>
+			<%=form_tag verificar_url,{:"data-parsley-validate"=>'true',method:'get'} do%>
+			<div class="row row-personalizado " >
+				
+					<div class="col-xs-12 col-sm-9 m-b-hasta-sm "
+					 style="padding:0">
+						<%=text_field_tag 'username','',{class:'form-control input-sin-outline',style:'padding:1em .1em;font-size:30px','data-parsley-length':'[5,12]',required:true}%>
+					</div>
+					<div class="col-xs-12 col-sm-3 " style="padding:none;">
+						<%=submit_tag 'VERIFICAR',{class:'btn btn-warning  btn-block',style:'padding:1em 0'}%>
+					</div>
+			</div>
+				<%end%>
+		</div>
+		</div>
+	</div>
 	<div id="fh5co-services-section" class="animate-box">
 		<div class="container">
 			<div class="row">
@@ -50,17 +72,17 @@
 			</div>
 			<div class="row flex-in-md" >
 				<% @categorias.each do |cat|%>
-				<div class="col-md-4 " >
-					<div class="services" >
-						<div style="width:57px;display:inline-block;position:absolute;top:20px;box-sizing:border-box;">
-						<%= image_tag cat.imagen.url(:mini),class:'img img-thumbnail' %>
-						</div>
-						<div class="desc" style="display:inline-block">
-							<h3><%=cat.nombre%></h3>
-							<p class="romper-linea"><%=cat.descripcion%></p>
+					<div class="col-md-4 " >
+						<div class="services" >
+							<div style="width:57px;display:inline-block;position:absolute;top:20px;box-sizing:border-box;">
+							<%= image_tag cat.imagen.url(:mini),class:'img img-thumbnail' %>
+							</div>
+							<div class="desc" style="display:inline-block">
+								<h3><%=cat.nombre%></h3>
+								<p class="romper-linea"><%=cat.descripcion%></p>
+							</div>
 						</div>
 					</div>
-				</div>
 				<%end%>
 				
 			</div>
@@ -85,9 +107,11 @@
 														
 							
 								<h5 class="panel-title titulo"><%=curso.titulo%></h5>
-								<%if curso.programations.size>0%>
+								<%if curso.programations.size==1%>
+									<p>En <%=curso.programations.size%> Institución</p>
+								<%elsif curso.programations.size>1%>
 									<p>En <%=curso.programations.size%> Instituciones</p>
-								<%elsif%>
+								<%else%>
 									<h6>Pronto disponible</h6>
 								<%end%>
 								<p class="m-b"></p>

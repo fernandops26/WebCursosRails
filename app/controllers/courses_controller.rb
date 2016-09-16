@@ -47,8 +47,6 @@ class CoursesController < ApplicationController
   def create
     @categorias=Category.all
     @course = Course.new(course_params)
-    puts @course.inspect
-    #@course.modalidades=params[:course][:programations_attributes]["0"][:modalities]
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Curso creado correctamente.' }
@@ -66,7 +64,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Cuso actualizado correctamente.' }
+        format.html { redirect_to @course, notice: 'Curso actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -80,7 +78,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Cuso eliminado correctamente.' }
+      format.html { redirect_to courses_url, notice: 'Curso eliminado correctamente.' }
       format.json { head :no_content }
     end
   end
@@ -93,7 +91,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:titulo, :category_id,:imagen, programations_attributes:[:id,:institution_id,:descripcion,:objetivos,:duracion,:horas,:costo,:plan,:fecha, :estado, :_destroy,modality_ids:[]])
+      params.require(:course).permit(:titulo,:tipo,:category_id,:imagen, programations_attributes:[:id,:institution_id,:descripcion,:objetivos,:duracion,:horas,:costo_matricula,:costo_mensualidad,:costo_certificacion,:plan,:fecha, :estado, :_destroy,modality_ids:[]])
       #params.require(:course).permit!
     end
 end
