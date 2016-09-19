@@ -11,10 +11,11 @@
 <header id="fh5co-header" role="banner">
 	<div class="container">
 		<div class="header-inner">
-			<h1><%= link_to 'Proncades',root_path%></h1>
-			<nav role="navigation">
-				<ul>
-					<li><a href="#" class="item-fp">Servicios</a>
+			<h1><%= link_to 'Proncades',root_path,{class:'punto_titulo'}%></h1>
+			<nav role="navigation" style="position:relative" >
+			<div class="menu-navegacion"></div>
+				<ul id="lista-menu-navegacion">
+					<li><a href="#" class="item-fp menu-item">Servicios</a>
 						<ul class="sublista">
 							<li><a href="/cursos?t=1">Especialidades</a></li>
 							<li><a href="/cursos?t=1">Diplomados</a></li>
@@ -22,15 +23,15 @@
 							<li><a href="/cursos?t=3">Doctorados</a></li>
 						</ul>
 					</li>
-					<li><a href="/#precios">Precios</a></li>
-					<li><a href="contacto">Contacto</a></li>
-					<li><a href="#" class="item-fp">Nosotros</a>
+					<li><a href="/#precios" class="menu-item">Precios</a></li>
+					<li><a href="contacto" class="menu-item">Contacto</a></li>
+					<li><a href="#" class="item-fp menu-item">Nosotros</a>
 						<ul class="sublista">
 							<li><%= link_to 'Coordinadores',coordinadores_url%></li>
 							<li><%= link_to 'Envia tu CV',aplicar_url%></li>
 						</ul>
 					</li>
-					<li class="cta"><%= link_to 'Inicia Aquí' , login_url%></li>
+					<li class="cta"><%= link_to 'Aula virtual' , 'http://www.pronacades.com',{class:'boton-accion-menu',target:'_blank'}%></li>
 				</ul>
 			</nav>
 		</div>
@@ -47,6 +48,43 @@
 </header>
 
 <%= yield %>
+
+	<footer id="fh5co-footer" role="contentinfo">
+	
+		<div class="container">
+			<div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>Sobre Nosotros</h3>
+				<p style="color:#fff;">Somos una empresa dedicada a ofrecer diplomados, para ello nos aliamos con Instituciones de primer nivel. </p>
+				<p><a href="#" class="btn btn-primary btn-outline with-arrow btn-sm">Registrate <i class="icon-arrow-right"></i></a></p>
+			</div>
+			<div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>Nuestros Servicios</h3>
+				<ul class="float">
+					<li><a href="/cursos?t=1" style="text-transform:uppercase">Diplomados</a></li>
+					<li><a href="/cursos?t=2" style="text-transform:uppercase">Maestrías</a></li>
+					<li><a href="/cursos?t=3" style="text-transform:uppercase">Doctorados</a></li>
+				</ul>
+
+			</div>
+
+			<div class="col-md-2 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>Contactanos</h3>
+				<ul class="fh5co-social">
+					<li><h5 style="color: rgba(255, 255, 255, 0.5);"><i class="glyphicon glyphicon-map-marker"></i>alguna direccion</h5></li>
+					<li><h5 style="color: rgba(255, 255, 255, 0.5);"><i class="glyphicon glyphicon-earphone"></i>(#) 073-630693</h5></li>
+					<li><h5 style="color: rgba(255, 255, 255, 0.5);"><i class="glyphicon glyphicon-earphone"></i>920111091-938566519</h5></li>
+					<li><h5 style="color: rgba(255, 255, 255, 0.5);"><i class="glyphicon glyphicon-envelope"></i>algun@correo.com</h5></li>
+				</ul>
+			</div>
+			
+			
+			<div class="col-md-12 fh5co-copyright text-center">
+				<p>&copy; 2016. Todos los Derechos Reservados. <span>Realizado por<i class="icon-heart"></i>  <a href="#" target="_blank">Gcode.ln</a> </span></p>	
+			</div>
+			
+		</div>
+	</footer>
+
 
 </div>
 

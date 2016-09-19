@@ -8,11 +8,10 @@ Rails.application.routes.draw do
 
   resources :programations
   scope '/management' do
-    resources :modalities, :institutions, :courses, :categories,:coordinators,:users
+    resources :modalities, :institutions, :courses, :categories,:coordinators,:users,:people
   end
 
-  resources :users
-
+ 
   #rutas de usuario
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -52,6 +51,8 @@ Rails.application.routes.draw do
    get 'search_curso', to: 'static#search_courses'
 
    get 'verificar', to: 'static#verify'
+
+   get 'pagos', to: 'static#buy_methods'
 
    post 'categories/update_destacar', to: 'categories#update_destacar'
 

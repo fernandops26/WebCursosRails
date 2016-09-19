@@ -130,6 +130,10 @@ def add_aplicator
  end
 
 
+ def buy_methods
+ end
+
+
  private
  def set_course
  	@course = Course.find(params[:id])

@@ -1,3 +1,6 @@
+$color-principal: rgba(brown,.9);
+$color-secundario: rgba($color-principal,.1);
+
 $font-primary: 'Raleway', Arial, sans-serif;
 
 // Overrides
@@ -170,12 +173,12 @@ h1, h2, h3, h4, h5, h6, figure {
 	}
 }
 .btn-primary {
-	background: $brand-primary;
+	background: $color-principal;
 	color: $brand-white;
-	border: 2px solid $brand-primary;
+	border: 2px solid $color-principal;
 	&:hover, &:focus, &:active {
-		background: lighten($brand-primary, 5%)!important;
-		border-color: lighten($brand-primary, 5%)!important;
+		background: $color-principal !important;
+		border-color: $color-principal !important;
 	}
 	&.btn-outline {
 		background: transparent;
@@ -501,7 +504,10 @@ h1, h2, h3, h4, h5, h6, figure {
 						bottom: 7px;
 						left: 10px;
 						right: 10px;
-						background-color: $brand-primary;
+						//---------------------------
+						//background-color: $brand-primary;
+						background-color:brown !important;
+						//----------------------
 						visibility: hidden;
 						-webkit-transform: scaleX(0);
 						-moz-transform: scaleX(0);
@@ -516,7 +522,10 @@ h1, h2, h3, h4, h5, h6, figure {
 					}
 					&:hover {
 						text-decoration: none;
-						color: rgba($brand-primary,1);
+						//------------------------
+						//color: rgba($brand-primary,1);
+						color: rgba(brown,1);
+						//-------------------------
 						
 
 						&:after {
@@ -578,7 +587,10 @@ h1, h2, h3, h4, h5, h6, figure {
 					position: absolute;
 					top:15px;
 					z-index: 2000;
-					background: rgba(#aaa,.05);
+					//-------------------------
+					//background: rgba(#aaa,.05);
+					background-color:rgba(#fff,1);
+					//----------------------
 					display: none;
 					border:1px solid #ddd;
 					border-radius: 3px;

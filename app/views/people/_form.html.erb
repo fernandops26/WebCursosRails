@@ -1,0 +1,120 @@
+<%= form_for([@person],class:'person_form1',id:'person_form1',style:'display:block;') do |f| %>
+<div class="col-md-8">
+  <div class="row">
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-12">
+    <%= f.label :nombres %>
+  <div class="form-group">
+    <%= f.text_field :nombres ,{class:"form-control"}%>
+  </div>
+  </div>
+  <div class="col-md-6">
+    <%= f.label 'Apellido Paterno'%><br>
+  <div class="form-group">
+    <%= f.text_field :ape_pat ,{class:"form-control"}%>
+  </div>
+  </div>
+  <div class="col-md-6">
+    <%= f.label 'Apellido Materno' %><br>
+  <div class="form-group">
+    <%= f.text_field :ape_mat,{class:"form-control"}%>
+  </div>
+  </div>
+  <div class="col-md-6">
+    <%= f.label :dni %><br>
+  <div class="form-group">
+    <%= f.text_field :dni,{class:"form-control"} %>
+  </div>
+  </div>
+  <div class="col-md-6">
+    <%= f.label :celular %><br>
+  <div class="form-group">
+    <%= f.number_field :celular,{class:"form-control"} %>
+  </div>
+  </div>
+  <div class="col-md-6">
+    <%= f.label "Celular Alternativo(Opcional)" %><br>
+  <div class="form-group">
+    <%= f.text_field :celular_op,{class:"form-control"} %>
+  </div>
+  </div>
+  <div class="col-md-12">
+    <%= f.label :sexo %><br>
+  <div class="form-group">
+   <div class="checkbox-inline">
+         <label><%= f.radio_button :sexo, true %> Hombre</label>
+      </div>
+      <div class="checkbox-inline">
+         <label><%= f.radio_button :sexo, false %> Mujer</label>
+      </div>
+  </div>
+  </div>
+  <div class="col-md-12">
+    <%= f.label :f_nacimiento %><br>
+  <div class="form-group">
+    <%=f.date_select(:f_nacimiento, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: 1940, end_year: Date.today.year,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto'})%>
+  </div>
+  </div>
+  <div class="col-md-12">
+    <%= f.label :email %><br>
+  <div class="form-group">
+    <%= f.text_field :email,{class:"form-control"} %>
+  </div>
+  </div>
+ 
+  <div class="col-md-12">
+    <%= f.label :district_id %><br>
+    <div class="form-group">
+      <%=f.grouped_collection_select :district_id, @provincias, :district,:nombreprov,:id,:nombredist,{prompt:'Selecciona Distritos'},{class:'form-control'}%>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <%= f.label :direccion %><br>
+    <div class="form-group">
+      <%= f.text_field :direccion,{class:"form-control"} %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%= f.label :profesion %><br>
+  <div class="form-group">
+    <%= f.text_field :profesion,{class:"form-control"} %>
+  </div>
+  </div>
+  <div class="col-md-6">
+    <%= f.label :grado_acad %><br>
+  <div class="form-group">
+    <%= f.text_field :grado_acad,{class:"form-control"} %>
+  </div>
+  </div>
+</div>
+</div>
+
+<div class="col-md-4">
+<label>Historial de cursos</label>
+<%=f.nested_fields_for :subsidiaries do |sub|%>
+<%= select_tag "tipo_id", options_for_select([['Diplomado','1'], ['Maestría', '2'],['Doctorado', '3']]) %>
+  </div>
+  <%= select_tag :category_id, options_from_collection_for_select([], "id", "nombre"),
+  "data-option-dependent" => true,
+  "data-option-observed" => "tipo_id",
+  "data-option-url" => "/specialization_types/:specialization_type_id:/specializations.json",
+  "data-option-key-method" => :id,
+  "data-option-value-method" => :name %>
+<%end%>  
+</div>
+
+<div class="col-md-12">
+    <%= f.submit 'Guardar',{class:'btn btn-success'}%>
+</div>
+<% end %>

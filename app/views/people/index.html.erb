@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+
+  <div class="col-md-12">
+    
+<p id="notice"><%= notice %></p>
+
+<h1>Lista Personas</h1>
+
+<%= link_to 'Nueva Persona', new_person_path(:id_user=>''),{class:'btn btn-success'} %>
+  </div>
+    <div class="col-md-12">
+      
+
+      <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dni</th>
+            <th>C. Actuales</th>
+            <th>C. Pendientes</th>
+            <th>C. Concluidos</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @people.each do |person| %>
+            <tr>
+              <td><% if person.user%>
+              <%= person.user.username %>
+              <%else%>
+              No asignado
+              <%end%>
+                
+              </td>
+              <td><%= person.nombres %></td>
+              <td> <%= person.ape_pat %> <%= person.ape_mat %></td>
+              <td><%= person.dni %></td>
+              <td><%= person.subsidiaries.select{|a| a.estado==true && a.programation.estado==true}.count%></td>
+              <td><%= person.subsidiaries.select{|a| a.estado==false && a.programation.estado==true}.count%></td>
+              <td><%= person.subsidiaries.select{|a| a.estado==true && a.programation.estado==false}.count%></td>
+              <td><%= link_to 'Ver', person %></td>
+              <td><%= link_to 'Editar', edit_person_path(person) %></td>
+              <td><%= link_to 'Eliminar', person, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+<br>
+
+
+    </div>
+  </div>
+</div>
