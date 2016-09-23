@@ -11,6 +11,12 @@
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong id="notice"><%= notice %></strong>
 		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<%=link_to 'Revisa los métodos de pago,aquí' , pagos_url%>
+			</div>
+			
+		</div>
 		<%end%>
 		
 
@@ -43,17 +49,18 @@
 	</div>
 		<div class="col-sm-6">
 			<div class="card card-outline-primary text-xs-center" style="border-color:#0275d8; background:#0275d8;color:#fff;">
-			<footer>
+			<div>
 		  <div class="card-block">
 		      <p><%= @programacion_actual.course.titulo %></p> 
 					
-		      <cite title="Source Title">Por: <%= @programacion_actual.institution.razon%> </cite></footer>
+		      <cite title="Source Title">Por: <%= @programacion_actual.institution.razon%> </cite></div>
 		  </div>
 		</div>
 		<div class="col-sm-12">
 			<strong style="font-size:13px">Si deseas cambiar tu seleccion dirigete a  </strong> <%=link_to 'Cursos', cursos_url,{style:'color:#5cb85c;'}%>
 		</div>
 		</div>
+		
 <%else%>
 	<div class="row">
 	<div class="col-sm-6">

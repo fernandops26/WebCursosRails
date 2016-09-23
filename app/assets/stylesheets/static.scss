@@ -533,3 +533,32 @@ $taman-padding-seccion: 3em;
 .timeline-body > p + p {
   margin-top: 5px;
 }
+
+
+#fh5co-hero{
+  position:relative !important;
+  > .logo-index-unmsm{
+    position:absolute !important;
+    top:-20px;
+    left:20px;
+    z-index:100000;
+    width:200px;
+    background-color:$color-principal;
+    padding:.5em;
+    border-radius:3px;
+
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: -19px;
+      border-top: 20px solid transparent;
+      border-right: 20px solid $color-principal;
+    }
+
+    img{
+      max-width:100% !important;
+      height:auto !important;
+    }
+  }
+}

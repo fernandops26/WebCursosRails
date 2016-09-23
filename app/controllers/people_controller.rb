@@ -19,7 +19,8 @@ class PeopleController < ApplicationController
     @person.subsidiaries.build
     @distritos=District.all
     @provincias=Province.all
-
+    @categorias=Category.all
+    @programaciones=Programation.all
   end
 
   # GET /people/1/edit
@@ -68,6 +69,24 @@ class PeopleController < ApplicationController
     end
   end
 
+  def obtener_cursos
+    @programaciones=Programation.joins(:course).where('courses.tipo = ? and courses.category_id = ?',params[:tipo_curso],params[:categoria])
+    #@cursos=Course.where('courses.tipo = ? and category_id = ?',params[:tipo_curso],params[:categoria])
+    respond_to do |format|
+      format.json {render json: @programaciones.to_json(:include=>[:institution,:course])}
+    end
+  end
+
+  def obtener_programaciones
+    @programaciones=Programation.where('course_id = ? ',params[:curso])
+
+    respond_to do |format|
+      format.json {render json: @programaciones.to_json(:include=>:institution)}
+    end
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
@@ -78,4 +97,5 @@ class PeopleController < ApplicationController
     def person_params
       params.require(:person).permit(:nombres, :ape_pat, :ape_mat, :sexo, :f_nacimiento, :celular, :email, :district_id, :direccion, :profesion, :grado_acad, :user_id, :dni, :celular_op)
     end
+
 end

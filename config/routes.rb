@@ -73,6 +73,10 @@ Rails.application.routes.draw do
 
    post 'management/subsidiaries/update_credential', to: 'subsidiaries#update_credential'
 
+   get 'people/obtener_cursos', to: 'people#obtener_cursos'
+
+   get 'people/obtener_programaciones', to: 'people#obtener_programaciones'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

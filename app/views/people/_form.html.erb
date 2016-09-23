@@ -101,18 +101,42 @@
 </div>
 
 <div class="col-md-4">
-<label>Historial de cursos</label>
+<label>Cursos</label>
+
 <%=f.nested_fields_for :subsidiaries do |sub|%>
-<%= select_tag "tipo_id", options_for_select([['Diplomado','1'], ['Maestría', '2'],['Doctorado', '3']]) %>
+<div class="card">
+  <div class="card-block">
+  <h5>Asignar curso</h5>
+
+  <div class="row">
+    <div class="col-sm-12">
+    <%= select_tag "tipo", options_for_select([['Diplomado','1'], ['Maestría', '2'],['Doctorado', '3']]),class:'people_cursos_tipo form-control' %>
+    </br>
+    <%=select_tag "people_categories", options_from_collection_for_select(@categorias,"id","nombre"),{class:'form-control people_categories'}%>
+    </br>
+    <%= text_field_tag "programations_id","",{class:'people_programations'}%>
+      
+    </div>
   </div>
-  <%= select_tag :category_id, options_from_collection_for_select([], "id", "nombre"),
-  "data-option-dependent" => true,
-  "data-option-observed" => "tipo_id",
-  "data-option-url" => "/specialization_types/:specialization_type_id:/specializations.json",
-  "data-option-key-method" => :id,
-  "data-option-value-method" => :name %>
+    
+    <div class="row">
+      <div class="col-sm-12">
+      <%= text_field_tag 'people_programation_full',"",{class:'form-control'}%>
+      </div>
+      <div class="col-sm-12">
+        
+        <%=button_tag 'buton',{class:' pull-right people_progrmation_change'}%>
+      </div>
+        
+        <%= sub.hidden_field :programation_id,{class:'people_programation_hidden'} %>
+    </div>
+    
+  </div>
+</div>
+  
 <%end%>  
 </div>
+<%=f.add_nested_fields_link :subsidiaries, 'Nueva matricula'%>
 
 <div class="col-md-12">
     <%= f.submit 'Guardar',{class:'btn btn-success'}%>
