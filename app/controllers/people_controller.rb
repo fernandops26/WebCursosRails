@@ -25,6 +25,9 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+    @distritos=District.all
+    @provincias=Province.all
+    @categorias=Category.all
   end
 
   # POST /people
@@ -32,6 +35,7 @@ class PeopleController < ApplicationController
   def create
     @distritos=District.all
     @provincias=Province.all
+    @categorias=Category.all
     @person = Person.new(person_params)
 
     respond_to do |format|
@@ -77,11 +81,11 @@ class PeopleController < ApplicationController
     end
   end
 
-  def obtener_programaciones
-    @programaciones=Programation.where('course_id = ? ',params[:curso])
+  def obtener_programacion
+    @programacion=Programation.find(params[:programacion_id])
 
     respond_to do |format|
-      format.json {render json: @programaciones.to_json(:include=>:institution)}
+      format.json {render json: @programacion.to_json(:include=>[:institution,:course])}
     end
   end
 
@@ -95,7 +99,7 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:nombres, :ape_pat, :ape_mat, :sexo, :f_nacimiento, :celular, :email, :district_id, :direccion, :profesion, :grado_acad, :user_id, :dni, :celular_op)
+      params.require(:person).permit(:id,:nombres, :ape_pat, :ape_mat, :sexo, :f_nacimiento, :celular, :email, :district_id, :direccion, :profesion, :grado_acad, :user_id, :dni, :celular_op,subsidiaries_attributes:[:id,:programation_id,:estado,:leido,:_destroy])
     end
 
 end

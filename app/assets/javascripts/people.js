@@ -35,27 +35,60 @@ $(document).ready(function() {
 
 	$(document).on("fields_added.nested_form_fields",function(event, param){
 
-		var peo_cat=$(param).find('.people_categories');
+		var peo_cat=$('.people_categories');
 
-		var peo_pro=peo_cat.siblings('.people_programations');
-		
-		peo_pro.hide();
-		$('#new_person').on('change', '.people_categories', function(event) {
+		$('.person_form1').on('change', '.people_categories', function(event) {
 			iniciar_selectize(this);
 		});
 
 		peo_cat.change();
 	});
 
-	$('#new_person').on('change', '.people_categories', function(event) {
-		
-
+	//Seleccionar combo categorias
+	$('.person_form1').on('change', '.people_categories', function(event) {
 		iniciar_selectize(this);
 	});
 
+	//Seleccionar tipo curso
+	$('.person_form1').on('change','.people_cursos_tipo',function(event){
+		$('.people_categories').change();
+	});
+
+	/*
 	$('#new_person').on('change', '.people_cursos', function(event) {
 			$(this).siblings('.people_categories').change();
+	});*/
+
+	$('.person_form1').on('change', '.people_programations', function(event) {
+		var id_programacion,prog_id_hidden,prog_full_name;
+			id_programacion=$(this).val();
+		var card_block=$(this).parent().parent().parent().siblings('.card-block')
+			prog_full_name=card_block.find('.people_programation_full');
+
+			$.get('/people/obtener_programacion', {programacion_id:id_programacion}, (function(data) {
+				console.log(data);
+				prog_full_name.val(data.course.titulo +" - "+data.institution.razon);
+      		}), 'json');
+
+
+
+		
+		prog_id_hidden=card_block.find('.people_programation_hidden');
+		prog_id_hidden.val(id_programacion);
+		
+
+		console.log(prog_id_hidden);
 	});
+
+	//Click para cambiar de curso seleccionado
+	$('.person_form1').on('click','.people_programation_change',function(event){
+		event.preventDefault();
+		var cont_program=$(this).parent().parent().parent().siblings('.card-block').children('.card-contenedor-cambio-curso');
+		console.log(cont_program);
+		cont_program.toggle();
+	});
+
+
 
 
 

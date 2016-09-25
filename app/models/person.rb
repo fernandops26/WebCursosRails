@@ -4,7 +4,7 @@ class Person < ActiveRecord::Base
   has_many :subsidiaries ,dependent: :destroy
   has_many :programations, :through => :subsidiaries
   
-  accepts_nested_attributes_for :subsidiaries
+  accepts_nested_attributes_for :subsidiaries, allow_destroy: true
 
   validates :nombres, presence: {message:"- No puede estar vacio"},length:{minimum:3 , message:"- Minimo 3 caracteres" }
 	validates :ape_pat, presence: {message: "- No puede estar vacio"},length:{minimum:3 , message:"- Minimo 3 caracteres" }
@@ -17,6 +17,20 @@ class Person < ActiveRecord::Base
 	validates :direccion , presence:{message:"- No puede estar vacio"},length:{minimum:5 , message:"- Minimo 5 caracteres" }
 	validates :profesion , presence:{message:"- No puede estar vacio"},length:{minimum:5 , message:"- Minimo 5 caracteres" }
 	validates :grado_acad , presence:{message:"- No puede estar vacio"},length:{minimum:5 , message:"- Minimo 5 caracteres" }
+
+
+
+ def self.buscar_prog(id_p)
+ 	puts "----------------------------------------------------"
+ 	puts "prog"+id_p.to_s
+ 	if !id_p.nil?
+	 	prog=Programation.find(id_p)
+	 	prog.course.titulo+" - "+prog.institution.razon 
+ 	else
+ 		""
+ 	end
+ 	
+ end
 
 
 end
