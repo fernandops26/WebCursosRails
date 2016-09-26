@@ -1,11 +1,12 @@
 class PeopleController < ApplicationController
   layout 'admin'
+  before_action :authenticate_user,:validate_admin
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.all.order(:nombres)
   end
 
   # GET /people/1
@@ -17,6 +18,7 @@ class PeopleController < ApplicationController
   def new
     @person = Person.new
     @person.subsidiaries.build
+    @departamentos=Department.all
     @distritos=District.all
     @provincias=Province.all
     @categorias=Category.all
@@ -25,6 +27,8 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+
+    @departamentos=Department.all
     @distritos=District.all
     @provincias=Province.all
     @categorias=Category.all
@@ -33,6 +37,7 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
+    @departamentos=Department.all
     @distritos=District.all
     @provincias=Province.all
     @categorias=Category.all
@@ -40,7 +45,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: 'Person creada correctamente.' }
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new }
@@ -52,9 +57,14 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
+
+    @departamentos=Department.all
+    @distritos=District.all
+    @provincias=Province.all
+    @categorias=Category.all
     respond_to do |format|
       if @person.update(person_params)
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to @person, notice: 'Persona actualizada correctamente.' }
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :edit }
@@ -68,7 +78,7 @@ class PeopleController < ApplicationController
   def destroy
     @person.destroy
     respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
+      format.html { redirect_to people_url, notice: 'Person correctamente eliminada.' }
       format.json { head :no_content }
     end
   end
@@ -78,6 +88,22 @@ class PeopleController < ApplicationController
     #@cursos=Course.where('courses.tipo = ? and category_id = ?',params[:tipo_curso],params[:categoria])
     respond_to do |format|
       format.json {render json: @programaciones.to_json(:include=>[:institution,:course])}
+    end
+  end
+
+   def obtener_usuarios
+    if current_user
+
+      if params[:id_user_edit]
+        @users=User.joins('LEFT OUTER JOIN "people" ON "users"."id" = "people"."user_id"').all.where('type_user=2 and (people.id is null or users.id= ?)',params[:id_user_edit])
+      else
+
+      @users=User.joins('LEFT OUTER JOIN "people" ON "users"."id" = "people"."user_id"').all.where('type_user=2 and people.id is null')
+      end
+      #@cursos=Course.where('courses.tipo = ? and category_id = ?',params[:tipo_curso],params[:categoria])
+      respond_to do |format|
+        format.json {render json: @users.to_json}
+      end
     end
   end
 

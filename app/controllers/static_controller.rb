@@ -56,13 +56,13 @@ def add_aplicator
 
 
  	if(params[:category_id] && params[:t])
-      @cursos=Course.where("category_id = ? and tipo= ?","#{params[:category_id]}","#{params[:t]}")
+      @cursos=Course.joins(:category).where("category_id = ? and tipo= ? and categories.estado=true","#{params[:category_id]}","#{params[:t]}")
       @tipo_curso=params[:t]
   elsif(params[:t])
-      @cursos=Course.where("tipo= ?","#{params[:t]}")
+      @cursos=Course.joins(:category).where("tipo= ? and categories.estado=true","#{params[:t]}")
       @tipo_curso=params[:t]
   else
-    @cursos=Course.where("tipo= 1")
+    @cursos=Course.joins(:category).where("tipo= 1 and categories.estado=true")
     @tipo_curso=1
   end
 

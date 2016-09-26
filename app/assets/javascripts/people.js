@@ -133,8 +133,37 @@ var iniciar_selectize=function(combo_categoria){
 
     }), 'json');
 
-	
 };
+
+
+var user_id_people=$('.people_user_id_form');
+
+if(user_id_people){
+	var id=user_id_people.val();
+	var params={
+
+	}
+
+	console.log("val "+id);
+	if(id!=""){
+		params.id_user_edit=id;
+	}
+
+	$.get('/people/obtener_usuarios', params, (function(data) {
+		console.log(data);
+		user_id_people.selectize({
+			create: false,
+		    valueField: 'id',
+		    labelField: 'username',
+		    searchField: 'username',
+		    maxItems: 1,
+		    options:data,
+		    maxOptions:3
+		});
+
+		console.log("valor: "+user_id_people.val());
+	}));
+}
 /*
 $('#new_person').on('keyup','.people_programations',function(){
 

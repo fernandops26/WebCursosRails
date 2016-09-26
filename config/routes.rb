@@ -77,6 +77,8 @@ Rails.application.routes.draw do
 
    get 'people/obtener_programacion', to: 'people#obtener_programacion'
 
+   get 'people/obtener_usuarios', to:'people#obtener_usuarios'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
