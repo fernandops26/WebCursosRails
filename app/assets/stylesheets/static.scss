@@ -570,11 +570,11 @@ $taman-padding-seccion: 3em;
 
 @font-face {
   font-family: "proncades";
-  src:url("fontastic/proncades.eot");
-  src:url("fontastic/proncades.eot?#iefix") format("embedded-opentype"),
-    url("fontastic/proncades.woff") format("woff"),
-    url("fontastic/proncades.ttf") format("truetype"),
-    url("fontastic/proncades.svg#proncades") format("svg");
+  src: asset-url('fontastic/proncades.eot');
+  src:asset-url('fontastic/proncades.eot?#iefix') format("embedded-opentype"),
+    asset-url('fontastic/proncades.woff') format("woff"),
+    asset-url('fontastic/proncades.ttf') format("truetype"),
+    asset-url('fontastic/proncades.svg#proncades') format("svg");
   font-weight: normal;
   font-style: normal;
 
