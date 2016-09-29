@@ -36,32 +36,32 @@
 					</ul>
 				</div>
 				<div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				<%= form_for @consulta,url:'contacto' do |f|%>
+				<%= form_for @consulta,{url:'contacto',:data=>{'parsley-validate':'true'}} do |f|%>
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-							<%=f.text_field :nombres, {placeholder:'Nombres',class:'form-control'}%>
+							<%=f.text_field :nombres, {placeholder:'Nombres',class:'form-control',required:true}%>
 								
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-							<%=f.text_field :apellidos,{placeholder:'Apellidos',class:'form-control'}%>
+							<%=f.text_field :apellidos,{placeholder:'Apellidos',class:'form-control',required:true}%>
 							</div>
 						</div>
 						<div class=" col-sm-8">
 							<div class="form-group">
-							<%=f.email_field :email, {placeholder:'Email',class:'form-control'}%>
+							<%=f.email_field :email, {placeholder:'Email',class:'form-control',required:true}%>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="form-group">
-							<%=f.text_field :telefono, {placeholder:'Telefono',class:'form-control'}%>
+							<%=f.text_field :telefono, {placeholder:'Telefono',class:'form-control',required:true}%>
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<%=f.text_area :mensaje, {placeholder:'Escribe tu consulta',class:'form-control',rows:6}%>
+								<%=f.text_area :mensaje, {placeholder:'Escribe tu consulta',class:'form-control',rows:6,required:true}%>
 							</div>
 						</div>
 

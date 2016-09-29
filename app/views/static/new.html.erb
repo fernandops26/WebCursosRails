@@ -82,7 +82,7 @@
 	</div>
 </div>
 
-<%=form_for @person , url:signup_path do |p|%>
+<%=form_for @person , {url:signup_path,:data=>{'parsley-validate':'true'}} do |p|%>
 
 <div class="row  ">
 	
@@ -91,27 +91,27 @@
 		<div class="col-md-12">
 		 <%= p.label 'Datos Personales'%></br>
 			<div class="form-group">
-			<%= p.text_field :nombres ,{class:'form-control',placeholder:'Nombre completo'}%>
+			<%= p.text_field :nombres ,{class:'form-control',placeholder:'Nombre completo',required:true}%>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
-			<%= p.text_field :ape_pat,{class:'form-control',placeholder:'Apellido Paterno'}%>
+			<%= p.text_field :ape_pat,{class:'form-control',placeholder:'Apellido Paterno',required:true}%>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
-			<%= p.text_field :ape_mat,{class:'form-control',placeholder:'Apellido Materno'}%>
+			<%= p.text_field :ape_mat,{class:'form-control',placeholder:'Apellido Materno',required:true}%>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
-			<%= p.text_field :dni,{class:'form-control',placeholder:'DNI'}%>
+			<%= p.text_field :dni,{class:'form-control',placeholder:'DNI',required:true}%>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
-			<%= p.text_field :celular,{class:'form-control',placeholder:'Celular'}%>
+			<%= p.text_field :celular,{class:'form-control',placeholder:'Celular',required:true}%>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -121,14 +121,14 @@
 		</div>
 		<div class="col-md-10">
 			<div class="form-group">
-			 <%= p.email_field :email ,{class:'form-control',placeholder:'Correo'}%>
+			 <%= p.email_field :email ,{class:'form-control',placeholder:'Correo',required:true}%>
 			</div>
 		</div>
 
 		<div class="col-md-12">
 			<div class="form-group">
 				<label>Fecha de nacimiento</label></br>
-				<%=p.date_select(:f_nacimiento, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: 1940, end_year: Date.today.year,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto'})%>
+				<%=p.date_select(:f_nacimiento, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: 1940, end_year: Date.today.year,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto',required:true})%>
 			</div>
 		</div>
 	</div>
@@ -164,23 +164,23 @@
 	</div>
 	<div class="col-md-12">
 		<div class="form-group">
-		<%=p.grouped_collection_select :district_id, @provincias, :district,:nombreprov,:id,:nombredist,{prompt:'Selecciona Distritos'},{class:'form-control'}%>
+		<%=p.grouped_collection_select :district_id, @provincias, :district,:nombreprov,:id,:nombredist,{prompt:'Selecciona Distritos'},{class:'form-control',required:true}%>
 		</div> 
 </div>
  	<div class="col-md-12">
 		<div class="form-group">
-		<%= p.text_field :direccion,{class:'form-control',placeholder:'Dirección'}%>
+		<%= p.text_field :direccion,{class:'form-control',placeholder:'Dirección',required:true}%>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="form-group">
 			<label >Educación</label></br>
-			<%= p.text_field :profesion ,{class:'form-control',placeholder:'Profesion'}%>
+			<%= p.text_field :profesion ,{class:'form-control',placeholder:'Profesion',required:true}%>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<div class="form-group">
-		<%= p.text_field :grado_acad ,{class:'form-control',placeholder:'Grado academico'}%>
+		<%= p.text_field :grado_acad ,{class:'form-control',placeholder:'Grado academico',required:true}%>
 		</div>
 	</div>
 		
