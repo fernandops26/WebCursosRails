@@ -1,5 +1,5 @@
 <div class="panel">
-<%= form_for([@course]) do |f| %>
+<%= form_for([@course],{:data=>{'parsley-validate':'true'}}) do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course.errors.count, "error") %> La operación no se ha realizado debido a:</h2>
@@ -21,12 +21,12 @@
     <%= f.label :tipo %>
   <div class="form-group">
     
-  <%= f.select(:tipo, [['Diplomado', 1], ['Maestría', 2],['Doctorado', 3]],{},{class:'form-control'}) %>
+  <%= f.select(:tipo, [['Diplomado', 1], ['Maestría', 2],['Doctorado', 3]],{},{class:'form-control',required:true}) %>
   </div>
 
       <%= f.label 'Categoria' %>
     <div class="form-group">
-      <%= f.select :category_id , options_from_collection_for_select(@categorias, "id", "nombre",:selected =>f.object.category_id),{},{class:'form-control'}%>
+      <%= f.select :category_id , options_from_collection_for_select(@categorias, "id", "nombre",:selected =>f.object.category_id),{},{class:'form-control',required:true}%>
     </div>
      
     <div class="form-group">
@@ -50,43 +50,43 @@
         <span class="pull-right clickable" data-effect="fadeOut"><%= pro.remove_nested_fields_link 'Eliminar Programación', data: { confirm: 'Estas seguro?', role:'button' }%></span>
              <%= pro.label 'Institución' %>
             <div class="form-group">
-              <%= pro.select :institution_id , options_from_collection_for_select(@instituciones, "id", "razon",:selected =>pro.object.institution_id ),{},{class:'form-control'}%>
+              <%= pro.select :institution_id , options_from_collection_for_select(@instituciones, "id", "razon",:selected =>pro.object.institution_id ),{},{class:'form-control',required:true}%>
             </div>
 
             <div class="form-group">
               <%= pro.label :descripcion %><br>
-              <%= pro.text_area :descripcion ,class:'form-control' %>
+              <%= pro.text_area :descripcion ,{class:'form-control',required:true} %>
             </div>
             <div class="form-group">
               <%= pro.label :objetivos %><br>
-              <%= pro.text_area :objetivos ,class:'form-control'%>
+              <%= pro.text_area :objetivos ,{class:'form-control',required:true}%>
             </div>
             <div class="form-group">
-              <%= pro.label :duracion %><br>
+              <%= pro.label :duracion,{required:true} %><br>
               
             </div>
             <div class="row">
               <div class="col-xs-6">
                 <div class="form-group">
-                  <%= pro.number_field :duracion ,{class:'form-control',placeholder:'Meses'}%>
+                  <%= pro.number_field :duracion ,{class:'form-control',placeholder:'Meses',required:true}%>
                 </div>
               </div>
               <div class="col-xs-6">
-                  <%= pro.number_field :horas,{class:'form-control',placeholder:'Horas'}%>
+                  <%= pro.number_field :horas,{class:'form-control',placeholder:'Horas',required:true}%>
               </div>
             </div>
             
             <div class="form-group">
               <%= pro.label 'costo matricula' %><br>
-              <%= pro.text_field :costo_matricula ,class:'form-control'%>
+              <%= pro.text_field :costo_matricula ,class:'form-control',required:true,required:true%>
             </div>
             <div class="form-group">
               <%= pro.label 'costo mensualidad' %><br>
-              <%= pro.text_field :costo_mensualidad ,class:'form-control'%>
+              <%= pro.text_field :costo_mensualidad ,class:'form-control',required:true%>
             </div>
             <div class="form-group">
               <%= pro.label 'costo certificacion' %><br>
-              <%= pro.text_field :costo_certificacion ,class:'form-control'%>
+              <%= pro.text_field :costo_certificacion ,class:'form-control',required:true%>
             </div>
             <div class="form-group">
               <%= pro.label 'Plan de estudio'%><br>
@@ -94,7 +94,7 @@
             </div>
              <%= pro.label :fecha %>
             <div class="form-group">
-              <%=pro.date_select(:fecha, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: Date.today.year, end_year: Date.today.year+5 ,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto'})%>
+              <%=pro.date_select(:fecha, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: Date.today.year, end_year: Date.today.year+5 ,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto',required:true})%>
             </div>
               <%= pro.label :estado %><br>
             <div class="form-group">

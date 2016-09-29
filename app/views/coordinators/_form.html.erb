@@ -1,5 +1,5 @@
 <div class="panel">
-  <%= form_for(@coordinator,html: { multipart: true }) do |f| %>
+  <%= form_for(@coordinator,html: { multipart: true,:data=>{'parsley-validate':'true'}}) do |f| %>
   <% if @coordinator.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@coordinator.errors.count, "error") %> prohibited this coordinator from being saved:</h2>
@@ -14,11 +14,11 @@
 
   <div class="form-group">
     <%= f.label :nombres %>
-    <%= f.text_field :nombres,{class:'form-control'} %>
+    <%= f.text_field :nombres,{class:'form-control',required:true} %>
   </div>
   <div class="form-group">
     <%= f.label :apellidos %>
-    <%= f.text_field :apellidos ,{class:'form-control'}%>
+    <%= f.text_field :apellidos ,{class:'form-control',required:true}%>
   </div>
   <div class="form-group">
     <%= f.label :curriculum %>
