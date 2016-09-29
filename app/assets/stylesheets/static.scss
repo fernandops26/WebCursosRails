@@ -353,6 +353,7 @@ $taman-padding-seccion: 3em;
     margin-bottom:15px !important;
     color:$color-principal !important;
     font-size:20px !important;
+    letter-spacing:0 !important;
 
 
     .price-contenido{
@@ -561,6 +562,33 @@ $taman-padding-seccion: 3em;
       height:auto !important;
     }
   }
+
+  > .logo-index-trujillo{
+    position:absolute !important;
+    top:-20px;
+    right:20px;
+    z-index:100000;
+    width:200px;
+    background-color:$color-principal;
+    padding:.5em;
+    border-radius:3px;
+
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: -19px;
+      border-top: 20px solid transparent;
+      border-left: 20px solid $color-principal;
+    }
+
+    img{
+      max-width:100% !important;
+      height:auto !important;
+    }
+  }
+
+
 }
 
 
@@ -625,7 +653,7 @@ $taman-padding-seccion: 3em;
 
 .sociales{
   position:fixed;
-  top:150px;
+  top:350px;
   left:-1px;
   background:transparent;
   z-index:3000000;
