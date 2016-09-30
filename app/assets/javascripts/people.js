@@ -66,7 +66,6 @@ $(document).ready(function() {
 			prog_full_name=card_block.find('.people_programation_full');
 
 			$.get('/people/obtener_programacion', {programacion_id:id_programacion}, (function(data) {
-				console.log(data);
 				prog_full_name.val(data.course.titulo +" - "+data.institution.razon);
       		}), 'json');
 
@@ -77,14 +76,14 @@ $(document).ready(function() {
 		prog_id_hidden.val(id_programacion);
 		
 
-		console.log(prog_id_hidden);
+
 	});
 
 	//Click para cambiar de curso seleccionado
 	$('.person_form1').on('click','.people_programation_change',function(event){
 		event.preventDefault();
 		var cont_program=$(this).parent().parent().parent().siblings('.card-block').children('.card-contenedor-cambio-curso');
-		console.log(cont_program);
+
 		cont_program.toggle();
 	});
 
@@ -106,7 +105,7 @@ var iniciar_selectize=function(combo_categoria){
 	t_curso=combo.siblings('.people_cursos_tipo').val();
 
 	$.get('/people/obtener_cursos', {categoria:cat,tipo_curso:t_curso}, (function(data) {
-			console.log(data);
+
 			if(data.length){
 				caja_program.selectize({
 					create: false,
@@ -144,13 +143,12 @@ if(user_id_people){
 
 	}
 
-	console.log("val "+id);
 	if(id!=""){
 		params.id_user_edit=id;
 	}
 
 	$.get('/people/obtener_usuarios', params, (function(data) {
-		console.log(data);
+
 		user_id_people.selectize({
 			create: false,
 		    valueField: 'id',
@@ -161,7 +159,7 @@ if(user_id_people){
 		    maxOptions:3
 		});
 
-		console.log("valor: "+user_id_people.val());
+
 	}));
 }
 /*
