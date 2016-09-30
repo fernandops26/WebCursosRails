@@ -195,11 +195,12 @@
 			</div>
 			<div class="row" style="display:flex;justify-content:center;flex-wrap:wrap;align-items:flex-start;">
 			<div class="col-md-6 call-center" style="">
-				<div class="call-center-container" style="text-align: right;padding-top: 5em;" >
-				<a href="/contacto">
+				<div class="call-center-container" style="text-align: right;padding-top: 5em;position: relative;" >
+				<a href="/contacto" >
 					<img src=<%=asset_path 'call.png'%> style="max-width:70% !important; height:auto;"></img>
 					<p style="width: 100%;display:block;text-align: center;font-size: 1.7em;">Contáctanos</p>
 				</a>
+					<img src=<%=asset_path 'telefono.gif'%> alt="" class="call-center-gif" style="position: absolute;display: block;z-index: 40; top:79%; right: 15px;width: 38px;">
 				</div>
 			</div>
 
@@ -312,10 +313,9 @@
 
 		</div>
 		<div class="row">
-		<div class="col-md-12 text-center">
-			
-			<a href="/pagos" style="font-size:2em;font-weight:bold;text-transform:uppercase">consulta los métodos de pago</a>
-		</div>
+			<!--<div class="col-md-12 text-center">
+				<a href="/pagos" style="font-size:2em;font-weight:bold;text-transform:uppercase">consulta los métodos de pago</a>
+			</div>-->
 		</div>
 	</div>
 	</div>
