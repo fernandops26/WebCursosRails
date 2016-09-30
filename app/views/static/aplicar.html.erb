@@ -34,22 +34,22 @@
 					
 				</div>
 				<div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
-				 <%= form_for(@coordinator,url:'aplicar',html: { multipart: true }) do |f| %>
+				 <%= form_for(@coordinator,url:'aplicar',html: { multipart: true ,:"data-parsley-validate"=>'true'}) do |f| %>
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group">
-							<%=f.text_field :nombres, {placeholder:'Nombres',class:'form-control'}%>
+							<%=f.text_field :nombres, {placeholder:'Nombres',class:'form-control',required:true}%>
 								
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-							 <%= f.text_field :apellidos,{placeholder:'Apellidos',class:'form-control'}%>
+							 <%= f.text_field :apellidos,{placeholder:'Apellidos',class:'form-control',required:true}%>
 							</div>
 						</div>
 						<div class=" col-sm-8">
 							<div class="form-group">
-							<%= f.file_field :curriculum, {class:'form-control'}%>
+							<%= f.file_field :curriculum, {class:'form-control',required:true}%>
 							</div>
 						</div>
 

@@ -37,20 +37,20 @@
     <div class="col-md-6">
       <%= f.label 'Apellido Materno' %><br>
     <div class="form-group">
-      <%= f.text_field :ape_mat,{class:"form-control"}%>
+      <%= f.text_field :ape_mat,{class:"form-control",required:true}%>
     </div>
     </div>
     <div class="col-md-6">
       <%= f.label :dni %><br>
     <div class="form-group">
-      <%= f.text_field :dni,{class:"form-control"} %>
+      <%= f.text_field :dni,{class:"form-control",required:true} %>
     </div>
     </div>
 
     <div class="col-md-6">
       <%= f.label :celular %><br>
     <div class="form-group">
-      <%= f.number_field :celular,{class:"form-control"} %>
+      <%= f.number_field :celular,{class:"form-control",required:true} %>
     </div>
     </div>
 
@@ -77,14 +77,14 @@
     <div class="col-md-12">
       <%= f.label :f_nacimiento %><br>
       <div class="form-group">
-        <%=f.date_select(:f_nacimiento, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: 1940, end_year: Date.today.year,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto'})%>
+        <%=f.date_select(:f_nacimiento, {prompt: {day: 'Dia', month: 'Mes', year: 'Año'},start_year: 1940, end_year: Date.today.year,order: [:day, :month, :year]},{class:'form-control inline',style:'display:inline;width:auto',required:true})%>
       </div>
     </div>
 
     <div class="col-md-12">
       <%= f.label :email %><br>
       <div class="form-group">
-        <%= f.text_field :email,{class:"form-control"} %>
+        <%= f.text_field :email,{class:"form-control",required:true} %>
       </div>
     </div>
  
@@ -103,28 +103,28 @@
 
     <div class="col-md-12">
       <div class="form-group">
-      <%=f.grouped_collection_select :district_id, @provincias, :district,:nombreprov,:id,:nombredist,{prompt:'Selecciona Distritos'},{class:'form-control'}%>
+      <%=f.grouped_collection_select :district_id, @provincias, :district,:nombreprov,:id,:nombredist,{prompt:'Selecciona Distritos'},{class:'form-control',required:true}%>
       </div> 
     </div>
 
     <div class="col-md-12">
       <%= f.label :direccion %><br>
       <div class="form-group">
-        <%= f.text_field :direccion,{class:"form-control"} %>
+        <%= f.text_field :direccion,{class:"form-control",required:true} %>
       </div>
     </div>
 
     <div class="col-md-6">
       <%= f.label :profesion %><br>
     <div class="form-group">
-      <%= f.text_field :profesion,{class:"form-control"} %>
+      <%= f.text_field :profesion,{class:"form-control",required:true} %>
     </div>
     </div>
 
     <div class="col-md-6">
       <%= f.label :grado_acad %><br>
     <div class="form-group">
-      <%= f.text_field :grado_acad,{class:"form-control"} %>
+      <%= f.text_field :grado_acad,{class:"form-control",required:true} %>
     </div>
     </div>
 </div>

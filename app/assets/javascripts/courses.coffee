@@ -11,8 +11,8 @@ $(document).ready ->
     i=0
     contador=($('.tinymce').size())-1
 
-    #$('#course_programations_attributes_'+contador+'_plan').tinymce
-    #  theme: 'modern'
+    $('#course_programations_attributes_'+contador+'_plan').tinymce
+      theme: 'modern'
 
     paneles=document.querySelectorAll('.panel-title.panel-curso')
     otros=document.querySelectorAll('.panel-collapse.panel-curso')
