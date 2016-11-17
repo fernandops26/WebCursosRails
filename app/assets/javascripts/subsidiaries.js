@@ -121,6 +121,7 @@ $(document).ready(function(){
 
     }
 
+
     if(data.programation!=null){
       if(data.programation.course.tipo=='1'){
         tipo_curso='Diplomado';
