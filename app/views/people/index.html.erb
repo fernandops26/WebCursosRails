@@ -39,9 +39,29 @@
               <td><%= person.nombres %></td>
               <td> <%= person.ape_pat %> <%= person.ape_mat %></td>
               <td><%= person.dni %></td>
-              <td class="text-center"><%= person.subsidiaries.select{|a| a.estado==true && a.programation.estado==true}.count%></td>
-              <td class="text-center"><%= person.subsidiaries.select{|a| a.estado==false && a.programation.estado==true}.count%></td>
-              <td class="text-center"><%= person.subsidiaries.select{|a| a.estado==true && a.programation.estado==false}.count%></td>
+              <td class="text-center">
+              <%if person.subsidiaries.present?  %>
+                <%= person.subsidiaries.select{|a| a.estado==true && a.programation.estado==true}.count%>
+                <%else%>
+                0
+                <%end%>
+              
+                
+              </td>
+              <td class="text-center">
+                <%if person.subsidiaries.present?  %>
+                <%= person.subsidiaries.select{|a| a.estado==false && a.programation.estado==true}.count%>
+                <%else%>
+                0
+                <%end%>
+                
+              </td>
+              <td class="text-center">
+              
+              <%= person.subsidiaries.select{|a| a.estado==true && a.programation.estado==false}.count%>
+              
+                
+              </td>
               <td><%= link_to 'Ver', person %></td>
               <td><%= link_to 'Editar', edit_person_path(person) %></td>
               <td><%= link_to 'Eliminar', person, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>

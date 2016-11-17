@@ -112,23 +112,35 @@ $(document).ready(function(){
     $('#detalle-registro-direccion').html(data.person.direccion);
     $('#detalle-registro-profesion').html(data.person.profesion);
     $('#detalle-registro-grado').html(data.person.grado_acad);
-    $('#detalle-registro-institucion').html(data.programation.institution.razon);
-    $('#detalle-registro-curso').html(data.programation.course.titulo);
-
-
-    if(data.programation.course.tipo=='1'){
-      tipo_curso='Diplomado';
-    }else if(data.programation.course.tipo=='2'){
-      tipo_curso='Maestria';
-    }else if(data.programation.course.tipo=='3'){
-      tipo_curso='Doctorado'
+    if(data.programation !=null){
+      $('#detalle-registro-institucion').html(data.programation.institution.razon);
+      $('#detalle-registro-curso').html(data.programation.course.titulo);
     }else{
-      tipo_curso='No identificado'
+      $('#detalle-registro-institucion').html('no asignado');
+      $('#detalle-registro-curso').html('no asignado');
+
     }
-    $('#detalle-registro-tipo').html(tipo_curso);
-    $('#detalle-registro-costo-matricula').html(data.programation.costo_matricula);
-    $('#detalle-registro-costo-mensualidad').html(data.programation.costo_mensualidad);
-    $('#detalle-registro-costo-certificacion').html(data.programation.costo_certificacion);
+
+    if(data.programation!=null){
+      if(data.programation.course.tipo=='1'){
+        tipo_curso='Diplomado';
+      }else if(data.programation.course.tipo=='2'){
+        tipo_curso='Maestria';
+      }else if(data.programation.course.tipo=='3'){
+        tipo_curso='Doctorado'
+      }else{
+        tipo_curso='No identificado'
+      }
+      $('#detalle-registro-tipo').html(tipo_curso);
+      $('#detalle-registro-costo-matricula').html(data.programation.costo_matricula);
+      $('#detalle-registro-costo-mensualidad').html(data.programation.costo_mensualidad);
+      $('#detalle-registro-costo-certificacion').html(data.programation.costo_certificacion);
+    }else{
+      $('#detalle-registro-tipo').html('no asignado');
+      $('#detalle-registro-costo-matricula').html('no signado');
+      $('#detalle-registro-costo-mensualidad').html('no signado');
+      $('#detalle-registro-costo-certificacion').html('no signado');
+    }
 
 
     if(data.person.user==null){

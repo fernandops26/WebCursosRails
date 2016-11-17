@@ -38,8 +38,6 @@
 						</div>
 						<div class="card-block">
 
-						<%unless @consulta.person.subsidiaries.present? %>
-
 							<%if @consulta.person.subsidiaries.select{|a| a.estado==false && a.programation.estado==true}.count >0%>
 
 								
@@ -69,9 +67,6 @@
 							<%else%>
 							<p class="text-muted">No existe ninguna información </p>
 							<%end%>
-						<%else%>
-							<p class="text-muted">Matriculado, pero aun no se ha inscrito a ningun curso </p>
-						<%end%>
 						<%=link_to 'Hacer otra consulta', '/#verify-section'%>
 					</div>
 				</div>
